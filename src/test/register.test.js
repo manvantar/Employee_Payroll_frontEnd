@@ -11,7 +11,7 @@ describe('Login test', () => {
     test('render h1 tag text', () => {
         expect(wrapper.find('h1').text()).toContain("EMPLOYEE PAYROLL");
     })
-    
+
     test('render h2 tag text', () => {
         expect(wrapper.find('h2').text()).toContain("REGISTRATION");
     })
