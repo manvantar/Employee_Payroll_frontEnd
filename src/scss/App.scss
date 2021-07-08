@@ -1,0 +1,27 @@
+.App {
+  text-align: right;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.Header {
+  justify-content: center;
+  color:rgba(106, 126, 238, 0.973);
+  padding: 2mm;
+}
+
+.form{
+  align-items: top;
+  margin-top: 10;
+}
+
+.active{
+  color:rgb(153, 18, 18);
+  word-spacing: 3mm;
+  align-items: top-right;
+  font-weight: bolder;
+}

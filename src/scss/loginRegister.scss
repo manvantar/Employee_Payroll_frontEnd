@@ -1,0 +1,26 @@
+.formStyle{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #c0c0c0;
+    .paperStyle { 
+        height: auto;
+        width: 400px;
+        display: flex;
+        flex-direction: column;
+        padding: 20px 40px;
+        border-radius: 5px;  
+        background-color: #ffffff;
+    }
+    .btnstyle{
+        margin: 10px 0;
+    }
+}
+
+.header { 
+    font-weight: bold;
+    color: blue; 
+    padding: 10
+}
