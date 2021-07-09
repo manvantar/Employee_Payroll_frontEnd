@@ -59,51 +59,51 @@ const Signup = ({ handleChange }) => {
             <Paper className='paperStyle'>
                 <h1 align='center' className='header'>EMPLOYEE PAYROLL</h1>
                 <Grid align='center'>
-                    <Avatar style={avatarStyle}><LockOutlinedIcon /></Avatar>
+                    <Avatar data-testid="avatar" style={avatarStyle}><LockOutlinedIcon /></Avatar>
                     <h2>REGISTRATION</h2>
                 </Grid>
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                     {(props) => (
-                        <Form>
+                        <Form data-testid="form">
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} label='First Name' name="firstName"
+                                    <Field as={TextField} data-testid="firstName" label='First Name' name="firstName"
                                         placeholder='Enter First Name' fullWidth required
                                         helperText={<ErrorMessage name="firstName" />}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} label='Last Name' name="lastName"
+                                    <Field as={TextField} data-testid="lastName" label='Last Name' name="lastName"
                                         placeholder='Enter Last Name' fullWidth required
                                         helperText={<ErrorMessage name="lastName" />}
                                     />
                                 </Grid>
                             </Grid>
-                            <Field as={TextField} label='Email Address' name="email"
+                            <Field as={TextField} data-testid="email" label='Email Address' name="email"
                                 placeholder='Enter Email' fullWidth required
                                 helperText={<ErrorMessage name="email" />}
                             />
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} label='Password' name="password"
+                                    <Field as={TextField} data-testid="password" label='Password' name="password"
                                         placeholder='Enter password' type='password' fullWidth required
                                         helperText={<ErrorMessage name="password" />} />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} label='Confirm Password' name="confirmPassword"
+                                    <Field as={TextField} data-testid="confirmPassword" label='Confirm Password' name="confirmPassword"
                                         placeholder='Enter password' type='password' fullWidth required
                                         helperText={<ErrorMessage name="confirmPassword" />} />
                                 </Grid>
                             </Grid>
-                            <Button type='submit' color='primary' variant="contained" disabled={props.isSubmitting}
+                            <Button type='submit' data-testid="submitButton" color='primary' variant="contained" disabled={props.isSubmitting}
                                 className='btnstyle' fullWidth>{props.isSubmitting ? "Loading" : "Register"}</Button>
                         </Form>
                     )}
                 </Formik>
                 <Typography align='center'> Already have an account ?
-                    <Link to="/login" >
+                    {/* <Link to="/login" >
                         Login
-                    </Link>
+                    </Link> */}
                 </Typography>
             </Paper>
         </Grid>
