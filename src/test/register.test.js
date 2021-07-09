@@ -1,5 +1,7 @@
 import { shallow, mount } from 'enzyme';
 import Register from '../pages/register';
+import { render, fireEvent } from '@testing-library/react';
+import '@testing-library/jest-dom/extend-expect'
 
 describe('Login test', () => {
     let wrapper;
@@ -17,3 +19,28 @@ describe('Login test', () => {
     })
 
 })
+
+describe('Register Page Elements availabity test', () => {
+
+    it('check elements available', () => {
+        const { getByTestId } = render(<Register />);
+        const logo = getByTestId('avatar');
+        const form = getByTestId('form');
+        const firstName = getByTestId('firstName');
+        const lastName = getByTestId('lastName');
+        const email = getByTestId('email');
+        const password = getByTestId('password');
+        const confirmPassword = getByTestId('confirmPassword');
+        const button = getByTestId('submitButton');
+
+        expect(logo).toBeInTheDocument();
+        expect(form).toBeInTheDocument();
+        expect(firstName).toBeInTheDocument();
+        expect(lastName).toBeInTheDocument();
+        expect(button).toBeInTheDocument();
+        expect(email).toBeInTheDocument();
+        expect(password).toBeInTheDocument();
+        expect(confirmPassword).toBeInTheDocument();
+    });
+
+});
