@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core'
+import { Grid, Paper, Avatar, TextField, Button, Typography, Snackbar } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
 import { Link } from 'react-router-dom';
@@ -11,6 +11,7 @@ const user = new User();
 
 const Login = ({ handleChange }) => {
     const history = useHistory();
+    const [open, SetOpen ] = React.useState(false);
     const avatarStyle = { backgroundColor: 'red' }
 
     const initialValues = {
@@ -24,6 +25,7 @@ const Login = ({ handleChange }) => {
     })
 
     const onSubmit = (values, props) => {
+        SetOpen(true)
         if (values) {
             const credentials = {
                 "emailId": values.email,
@@ -47,7 +49,15 @@ const Login = ({ handleChange }) => {
         }
     }
 
+    const handleClose=(event, reason)=>{
+        if(reason==='clickaway'){
+            return
+        }
+        SetOpen(false)
+    }
+
     return (
+        <div>
         <Grid className='formStyle'>
             <Paper className='paperStyle'>
                 <h1 align='center' className='header'>EMPLOYEE PAYROLL</h1>
@@ -77,7 +87,25 @@ const Login = ({ handleChange }) => {
                     </Link>
                 </Typography>
             </Paper>
+            <Snackbar
+            anchorOrigin={{
+                vertical: 'bottom',
+                horizontal: 'left'
+            }}>
+            open={open}
+            autoHideDuration={1000}
+            onClose={handleClose}
+            message="I'm SnackBar"
+            action={
+                <React.Fragment>
+                    <Button onClick={handleClose}>Click me </Button>
+                </React.Fragment>
+            }
+
+        </Snackbar>
         </Grid>
+       
+        </div>
     )
 }
 
