@@ -23,7 +23,7 @@ describe('Login Headers Tag test', () => {
 
 describe('Login Elements availabity test', () => {
 
-  it('check elements available', () => {
+  test('check elements available', () => {
     const { getByTestId } = render(<Login />);
     const logo = getByTestId('avatar');
     const form = getByTestId('form');
@@ -38,11 +38,11 @@ describe('Login Elements availabity test', () => {
     expect(password).toBeInTheDocument();
   });
 
-  it('check elements value', () => {
+  test('check elements value', () => {
     const { getByTestId } = render(<Login />);
     const email = getByTestId('email');
     const password = getByTestId('password');
-    const button = getByTestId('button');
+    const button = getByTestId('button')
 
     expect(email).toHaveTextContent('Email Address');
     expect(password).toHaveTextContent('Password');

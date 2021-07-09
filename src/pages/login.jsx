@@ -1,4 +1,4 @@
-import React,{ PropTypes} from 'react';
+import React from 'react';
 import { Grid, Paper, Avatar, TextField, Button, Typography } from '@material-ui/core'
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import { Formik, Form, Field, ErrorMessage } from 'formik'
@@ -72,9 +72,9 @@ const Login = ({ handleChange }) => {
                     )}
                 </Formik>
                 <Typography align='center'> Do not have an account ?
-                    {/* <Link data-testid="link" to="/register" >
+                    <Link data-testid="link" to="/register" >
                         Register
-                    </Link> */}
+                    </Link>
                 </Typography>
             </Paper>
         </Grid>

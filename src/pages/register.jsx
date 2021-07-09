@@ -101,9 +101,9 @@ const Signup = ({ handleChange }) => {
                     )}
                 </Formik>
                 <Typography align='center'> Already have an account ?
-                    {/* <Link to="/login" >
+                    <Link to="/login" >
                         Login
-                    </Link> */}
+                    </Link>
                 </Typography>
             </Paper>
         </Grid>

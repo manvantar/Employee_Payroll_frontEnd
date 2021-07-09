@@ -3,11 +3,11 @@ import Signup  from './pages/register'
 import Login from './pages/login'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ClippedDrawer from './components/dashboard';
-import history from './history';
+//import history from './history';
 
 const App = () => {
   return (
-    <Router history={history}>
+    <Router >
       <div className="App">
           <Switch>
           <Route exact path='/' component={Signup} />
