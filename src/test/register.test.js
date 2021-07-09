@@ -7,7 +7,6 @@ describe('Login test', () => {
     let wrapper;
     beforeEach(() => {
         wrapper = shallow(<Register />);
-
     })
 
     test('render h1 tag text', () => {
@@ -22,7 +21,7 @@ describe('Login test', () => {
 
 describe('Register Page Elements availabity test', () => {
 
-    it('check elements available', () => {
+    test('check elements available', () => {
         const { getByTestId } = render(<Register />);
         const logo = getByTestId('avatar');
         const form = getByTestId('form');
@@ -43,4 +42,21 @@ describe('Register Page Elements availabity test', () => {
         expect(confirmPassword).toBeInTheDocument();
     });
 
+    test('check Register page elements value', () => {
+        const { getByTestId } = render(<Register />);
+        const email = getByTestId('email');
+        const password = getByTestId('password');
+        const button = getByTestId('submitButton');
+        const firstName = getByTestId('firstName');
+        const lastName = getByTestId('lastName');
+        const confirmPassword = getByTestId('confirmPassword');
+        
+        expect(firstName).toHaveTextContent('First Name');
+        expect(lastName).toHaveTextContent('Last Name');
+        expect(email).toHaveTextContent('Email Address');
+        expect(password).toHaveTextContent('Password');
+        expect(confirmPassword).toHaveTextContent('Confirm Password');       
+        expect(button).toHaveTextContent('Register');
+    });
+    
 });
