@@ -1,9 +1,7 @@
-import { render } from '@testing-library/react';
-import { shallow, mount } from 'enzyme';
+import { shallow} from 'enzyme';
 import App from '../App';
 import React from 'react';
-import ReactDOM from 'react-dom';
-import { MemoryRouter, Route } from 'react-router';
+import {Route } from 'react-router';
 import Signup from '../pages/register'
 import Login from '../pages/login'
 
