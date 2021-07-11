@@ -33,13 +33,6 @@ export default function Header() {
             <Toolbar>
                 <Grid container
                     alignItems="center">
-                    {/* <Grid item>
-                        <InputBase
-                            placeholder="Search topics"
-                            className={classes.searchInput}
-                            startAdornment={<SearchIcon fontSize="small" />}
-                        />
-                    </Grid> */}
                     <Grid item sm></Grid>
                     <Grid item>
                         <IconButton>

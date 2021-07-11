@@ -21,18 +21,26 @@ import ListIcon from '@material-ui/icons/List';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import '../scss/dashboard.scss'
-import Header from './dashboard/Header'
+import { Grid, Badge } from '@material-ui/core'
+import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
+import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
 
+  root: {
+    backgroundColor: '#fff',
+    height: 'auto'
+  },
   appBar: {
+    backgroundColor: '#fff',
     display: 'flex',
-    alignItems: 'center',
+    alignItems: 'Right',
     justifyContent: 'flex-end',
   },
   appBarShift: {
-     width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${drawerWidth}px)`,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -64,7 +72,8 @@ const useStyles = makeStyles((theme) => ({
     //   duration: theme.transitions.duration.enteringScreen,
     // }),
     marginLeft: 10,
-  }
+  },
+
 
 }));
 
@@ -82,33 +91,48 @@ export default function PersistentDrawerLeft() {
   };
 
   return (
-    <div className='root'>
+    <div className=''>
       <CssBaseline />
-      <Header/>
-      {/* <AppBar
-        <Header />
-      //  // position="fixed"
-      //   className={clsx(classes.appBar, {
-      //     [classes.appBarShift]: open,
-      //   })}
+      <AppBar
+        position="fixed"
+        className={clsx(classes.appBar, {
+          [classes.appBarShift]: open,
+        })}
       >
-        <Toolbar className='toolbar'>
+        <Toolbar className=''>
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
           >
-            <MenuIcon />
+          <MenuIcon />
           </IconButton>
-          <Typography variant="h6" noWrap>
+          <Typography variant="h8" noWrap>
             Employee Payroll
-          </Typography>    
-          <Button className='logout' >Logout</Button>     
+          </Typography>
+          <Grid container
+            alignItems="center">
+            <Grid item sm></Grid>
+            <Grid item>
+              <IconButton>
+                <Badge badgeContent={1} variant="sharp" color="secondary">
+                  <NotificationsNoneIcon fontSize="small" />
+                </Badge>
+              </IconButton>
+              <IconButton>
+                <Badge badgeContent={1} variant="sharp" color="primary">
+                  <ChatBubbleOutlineIcon fontSize="small" />
+                </Badge>
+              </IconButton>
+              <Button variant="contained" color="primary">
+                logout
+              </Button>
+            </Grid>
+          </Grid>
         </Toolbar>
-      
-      </AppBar> */}
+      </AppBar>
+
       <Drawer
         className='drawer'
         variant="persistent"
@@ -124,26 +148,26 @@ export default function PersistentDrawerLeft() {
           </IconButton>
         </div>
         <Divider />
-        <List>         
-            <ListItem button key="List">
-              <ListItemIcon>{ <ListIcon /> }</ListItemIcon>
-              <ListItemText primary="List" />
-            </ListItem>
-      
-            <ListItem button key="Add">
-              <ListItemIcon>{ <AddIcon /> }</ListItemIcon>
-              <ListItemText primary="Add" />
-            </ListItem>
-          
-            <ListItem button key='Edit'>
-              <ListItemIcon>{ <EditIcon /> }</ListItemIcon>
-              <ListItemText primary='Edit' />
-            </ListItem>
-          
-            <ListItem button key='Delete'>
-              <ListItemIcon>{ <DeleteIcon /> }</ListItemIcon>
-              <ListItemText primary='Delete' />
-            </ListItem>
+        <List>
+          <ListItem button key="List">
+            <ListItemIcon>{<ListIcon />}</ListItemIcon>
+            <ListItemText primary="List" />
+          </ListItem>
+
+          <ListItem button key="Add">
+            <ListItemIcon>{<AddIcon />}</ListItemIcon>
+            <ListItemText primary="Add" />
+          </ListItem>
+
+          <ListItem button key='Edit'>
+            <ListItemIcon>{<EditIcon />}</ListItemIcon>
+            <ListItemText primary='Edit' />
+          </ListItem>
+
+          <ListItem button key='Delete'>
+            <ListItemIcon>{<DeleteIcon />}</ListItemIcon>
+            <ListItemText primary='Delete' />
+          </ListItem>
         </List>
       </Drawer>
       <main
@@ -152,7 +176,7 @@ export default function PersistentDrawerLeft() {
         })}
       >
         <div className={classes.drawerHeader} />
-       
+
       </main>
     </div>
   );
