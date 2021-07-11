@@ -11,7 +11,7 @@ const user = new User();
 
 const Login = ({ handleChange }) => {
     const history = useHistory();
-    const [open, SetOpen ] = React.useState(false);
+    const [open, SetOpen] = React.useState(false);
     const avatarStyle = { backgroundColor: 'red' }
 
     const initialValues = {
@@ -34,7 +34,7 @@ const Login = ({ handleChange }) => {
             user.login(credentials)
                 .then(res => {
                     if (res.data.success === true) {
-                        alert(res.data.message)
+                        //alert(res.data.message)
                         localStorage.setItem('token', res.data.token);
                         history.push('/dashboard');
                     }
@@ -49,8 +49,8 @@ const Login = ({ handleChange }) => {
         }
     }
 
-    const handleClose=(event, reason)=>{
-        if(reason==='clickaway'){
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
             return
         }
         SetOpen(false)
@@ -58,53 +58,53 @@ const Login = ({ handleChange }) => {
 
     return (
         <div>
-        <Grid className='formStyle'>
-            <Paper className='paperStyle'>
-                <h1 align='center' className='header'>EMPLOYEE PAYROLL</h1>
-                <Grid align='center'>
-                    <Avatar data-testid="avatar" style={avatarStyle}><LockOutlinedIcon /></Avatar>
-                    <h2 data-testid="LOGIN">LOGIN</h2>
-                </Grid>
-                <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
-                    {(props) => (
-                        <Form data-testid="form">
-                            <Field as={TextField} className='btnstyle' data-testid="email" label='Email Address' name="email"
-                                placeholder='Enter Email' variant="outlined" fullWidth required
-                                helperText={<ErrorMessage className='error' name="email" />}
-                            />
-                            <Field as={TextField} className='btnstyle' data-testid="password" label='Password' name="password"
-                                placeholder='Enter password' variant="outlined" type='password' fullWidth required
-                                helperText={<ErrorMessage className='error' name="password" />} />
+            <Grid className='formStyle'>
+                <Paper className='paperStyle'>
+                    <h1 align='center' className='header'>EMPLOYEE PAYROLL</h1>
+                    <Grid align='center'>
+                        <Avatar data-testid="avatar" style={avatarStyle}><LockOutlinedIcon /></Avatar>
+                        <h2 data-testid="LOGIN">LOGIN</h2>
+                    </Grid>
+                    <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
+                        {(props) => (
+                            <Form data-testid="form">
+                                <Field as={TextField} className='btnstyle' data-testid="email" label='Email Address' name="email"
+                                    placeholder='Enter Email' variant="outlined" fullWidth required
+                                    helperText={<ErrorMessage className='error' name="email" />}
+                                />
+                                <Field as={TextField} className='btnstyle' data-testid="password" label='Password' name="password"
+                                    placeholder='Enter password' variant="outlined" type='password' fullWidth required
+                                    helperText={<ErrorMessage className='error' name="password" />} />
 
-                            <Button type='submit' data-testid="button" color='primary' variant="contained" disabled={props.isSubmitting}
-                                className='btnstyle' fullWidth>{props.isSubmitting ? "Loading" : "Login"}</Button>
-                        </Form>
-                    )}
-                </Formik>
-                <Typography align='center'> Do not have an account ?
-                    <Link data-testid="link" to="/register" >
-                        Register
-                    </Link>
-                </Typography>
-            </Paper>
-            <Snackbar
-            anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left'
-            }}>
-            open={open}
-            autoHideDuration={1000}
-            onClose={handleClose}
-            message="I'm SnackBar"
-            action={
-                <React.Fragment>
-                    <Button onClick={handleClose}>Click me </Button>
-                </React.Fragment>
-            }
+                                <Button type='submit' data-testid="button" color='primary' variant="contained" disabled={props.isSubmitting}
+                                    className='btnstyle' fullWidth>{props.isSubmitting ? "Loading" : "Login"}</Button>
+                            </Form>
+                        )}
+                    </Formik>
+                    <Typography align='center'> Do not have an account ?
+                        <Link data-testid="link" to="/register" >
+                            Register
+                        </Link>
+                    </Typography>
+                </Paper>
+                <Snackbar
+                    anchorOrigin={{
+                        vertical: 'bottom',
+                        horizontal: 'left'
+                    }}>
+                    open={open}
+                    autoHideDuration={1000}
+                    onClose={handleClose}
+                    message="I'm SnackBar"
+                    action={
+                        <React.Fragment>
+                            <Button onClick={handleClose}>Click me </Button>
+                        </React.Fragment>
+                    }
 
-        </Snackbar>
-        </Grid>
-       
+                </Snackbar>
+            </Grid>
+
         </div>
     )
 }

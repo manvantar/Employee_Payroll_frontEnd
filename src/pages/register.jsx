@@ -83,7 +83,7 @@ const Signup = ({ handleChange }) => {
                                 placeholder='Enter Email' variant="outlined" fullWidth required
                                 helperText={<ErrorMessage name="email" />}
                             />
-                            <Grid container  spacing={1}>
+                            <Grid container spacing={1}>
                                 <Grid item xs={12} sm={6}>
                                     <Field className='btnstyle' as={TextField} data-testid="password" label='Password' name="password"
                                         placeholder='Enter password' variant="outlined" type='password' fullWidth required
