@@ -24,6 +24,7 @@ import '../scss/dashboard.scss'
 import { Grid, Badge } from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
+import { useHistory } from "react-router";
 
 const drawerWidth = 240;
 
@@ -78,6 +79,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function PersistentDrawerLeft() {
+  const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
@@ -89,6 +91,11 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleLogout = () => {
+    localStorage.removeItem("token")
+    history.push('/login');
+  }
 
   return (
     <div className=''>
@@ -125,7 +132,7 @@ export default function PersistentDrawerLeft() {
                   <ChatBubbleOutlineIcon fontSize="small" />
                 </Badge>
               </IconButton>
-              <Button variant="contained" color="primary">
+              <Button variant="contained" type="submit" onClick={handleLogout} color="primary">
                 logout
               </Button>
             </Grid>
