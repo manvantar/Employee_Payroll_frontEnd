@@ -68,12 +68,12 @@ const Login = ({ handleChange }) => {
                 <Formik initialValues={initialValues} onSubmit={onSubmit} validationSchema={validationSchema}>
                     {(props) => (
                         <Form data-testid="form">
-                            <Field as={TextField} data-testid="email" label='Email Address' name="email"
-                                placeholder='Enter Email' fullWidth required
+                            <Field as={TextField} className='btnstyle' data-testid="email" label='Email Address' name="email"
+                                placeholder='Enter Email' variant="outlined" fullWidth required
                                 helperText={<ErrorMessage className='error' name="email" />}
                             />
-                            <Field as={TextField} data-testid="password" label='Password' name="password"
-                                placeholder='Enter password' type='password' fullWidth required
+                            <Field as={TextField} className='btnstyle' data-testid="password" label='Password' name="password"
+                                placeholder='Enter password' variant="outlined" type='password' fullWidth required
                                 helperText={<ErrorMessage className='error' name="password" />} />
 
                             <Button type='submit' data-testid="button" color='primary' variant="contained" disabled={props.isSubmitting}

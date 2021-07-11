@@ -11,7 +11,7 @@ const userobject = new user();
 
 const Signup = ({ handleChange }) => {
     const history = useHistory();
-    const avatarStyle = { backgroundColor: '#1bbd7e' }
+    const avatarStyle = { backgroundColor: 'red' }
 
     const initialValues = {
         firstName: '',
@@ -67,31 +67,31 @@ const Signup = ({ handleChange }) => {
                         <Form data-testid="form">
                             <Grid container spacing={2}>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} data-testid="firstName" label='First Name' name="firstName"
-                                        placeholder='Enter First Name' fullWidth required
+                                    <Field as={TextField} className='btnstyle' data-testid="firstName" label='First Name' name="firstName"
+                                        placeholder='Enter First Name' variant="outlined" fullWidth required
                                         helperText={<ErrorMessage name="firstName" />}
                                     />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} data-testid="lastName" label='Last Name' name="lastName"
-                                        placeholder='Enter Last Name' fullWidth required
+                                    <Field as={TextField} className='btnstyle' data-testid="lastName" label='Last Name' name="lastName"
+                                        placeholder='Enter Last Name' variant="outlined" fullWidth required
                                         helperText={<ErrorMessage name="lastName" />}
                                     />
                                 </Grid>
                             </Grid>
-                            <Field as={TextField} data-testid="email" label='Email Address' name="email"
-                                placeholder='Enter Email' fullWidth required
+                            <Field className='btnstyle' spacing={2} as={TextField} data-testid="email" label='Email Address' name="email"
+                                placeholder='Enter Email' variant="outlined" fullWidth required
                                 helperText={<ErrorMessage name="email" />}
                             />
-                            <Grid container spacing={2}>
+                            <Grid container  spacing={2}>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} data-testid="password" label='Password' name="password"
-                                        placeholder='Enter password' type='password' fullWidth required
+                                    <Field className='btnstyle' as={TextField} data-testid="password" label='Password' name="password"
+                                        placeholder='Enter password' variant="outlined" type='password' fullWidth required
                                         helperText={<ErrorMessage name="password" />} />
                                 </Grid>
                                 <Grid item xs={12} sm={6}>
-                                    <Field as={TextField} data-testid="confirmPassword" label='Confirm Password' name="confirmPassword"
-                                        placeholder='Enter password' type='password' fullWidth required
+                                    <Field className='btnstyle' as={TextField} data-testid="confirmPassword" label='Confirm Password' name="confirmPassword"
+                                        placeholder='Enter password' variant="outlined" type='password' fullWidth required
                                         helperText={<ErrorMessage name="confirmPassword" />} />
                                 </Grid>
                             </Grid>

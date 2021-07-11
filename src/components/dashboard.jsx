@@ -34,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
     height: 'auto'
   },
   appBar: {
-    backgroundColor: '#fff',
+    backgroundColor: '#c0c0c0',
     display: 'flex',
     alignItems: 'Right',
     justifyContent: 'flex-end',
