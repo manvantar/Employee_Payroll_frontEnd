@@ -9,6 +9,11 @@ import User from '../services/user';
 import { useHistory } from "react-router";
 const user = new User();
 
+/**
+* @description Login functional component to return Login Page
+* @param handlechange when the values changes in the form 
+* @return Login page component
+*/
 const Login = ({ handleChange }) => {
     const history = useHistory();
     const [open, SetOpen] = React.useState(false);
@@ -19,11 +24,19 @@ const Login = ({ handleChange }) => {
         password: '',
     }
 
+    /**
+    * @description Validation Schema using YUP
+    * @return Error if validation fails
+    */
     const validationSchema = Yup.object().shape({
         email: Yup.string().email('please enter valid email').required("Required"),
         password: Yup.string().required("Required").min(8)
     })
 
+    /**
+    * @description Handle Onsubmit-> Intigrates the data object with backemd when Services API is called
+    * @params takes input as values and props
+    */
     const onSubmit = (values, props) => {
         SetOpen(true)
         if (values) {

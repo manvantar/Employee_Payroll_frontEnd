@@ -9,6 +9,11 @@ import { useHistory } from "react-router";
 import user from '../services/user';
 const userobject = new user();
 
+/**
+* @description Registration functional component to return Registration Page
+* @param handlechange when the values changes in the form 
+* @return Registration page component
+*/
 const Signup = ({ handleChange }) => {
     const history = useHistory();
     const avatarStyle = { backgroundColor: 'red' }
@@ -21,6 +26,10 @@ const Signup = ({ handleChange }) => {
         confirmPassword: '',
     }
 
+    /**
+    * @description Validation Schema using YUP
+    * @return Error if validation fails
+    */
     const validationSchema = Yup.object().shape({
         firstName: Yup.string().min(2).required("Required"),
         lastName: Yup.string().min(1).required("Required"),
@@ -29,6 +38,10 @@ const Signup = ({ handleChange }) => {
         confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords must match')
     })
 
+    /**
+    * @description Handle Onsubmit-> Intigrates the data object with backemd when Services API is called
+    * @params takes input as values and props
+    */
     const onSubmit = (values, props) => {
         if (values) {
             const userData = {
