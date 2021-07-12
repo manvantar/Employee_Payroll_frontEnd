@@ -78,20 +78,35 @@ const useStyles = makeStyles((theme) => ({
 
 }));
 
+/**
+* @description dashboard functional component with sideNavigation bar and Header
+* @return sideNavigation bar and Header
+*/
+
 export default function PersistentDrawerLeft() {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
+  /**
+  * @description handle drawerOpen, when its called sets setOPen variable to true
+  */
   const handleDrawerOpen = () => {
     setOpen(true);
   };
 
+
+  /**
+  * @description handle drawerClose, when its called sets setOPen variable to false
+  */
   const handleDrawerClose = () => {
     setOpen(false);
   };
 
+  /**
+  * @description handle Logout button, when its called- clears Local storage and pushes the page to Login
+  */
   const handleLogout = () => {
     localStorage.removeItem("token")
     history.push('/login');
