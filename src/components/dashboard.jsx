@@ -25,6 +25,7 @@ import { Grid, Badge } from '@material-ui/core'
 import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { useHistory } from "react-router";
+import employee from '../services/employee';
 
 const drawerWidth = 240;
 
@@ -75,7 +76,6 @@ const useStyles = makeStyles((theme) => ({
     marginLeft: 10,
   },
 
-
 }));
 
 /**
@@ -110,6 +110,22 @@ export default function PersistentDrawerLeft() {
   const handleLogout = () => {
     localStorage.removeItem("token")
     history.push('/login');
+  }
+
+  /**
+  * @description handle Logout button, when its called- clears Local storage and pushes the page to Login
+  */
+  const handleList = () => {
+    employee.getAllEmployees().then(res => {
+      if (res.data.success === true) {
+        console.log(res);        
+      }
+      else {
+        alert("Something went wrong")
+      }
+    }).catch(error => {
+      alert("Something went wrong " + error.message)
+    });
   }
 
   return (
@@ -173,7 +189,7 @@ export default function PersistentDrawerLeft() {
         <List>
           <ListItem button key="List">
             <ListItemIcon>{<ListIcon />}</ListItemIcon>
-            <ListItemText primary="List" />
+            <ListItemText type="submit" onClick={handleList} primary="List" />
           </ListItem>
 
           <ListItem button key="Add">

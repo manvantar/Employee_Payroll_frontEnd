@@ -4,9 +4,11 @@ import Login from './pages/login'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ClippedDrawer from './components/dashboard';
 import navbar from './components/dashboard/navbar';
-//import NavBar from './components/NavBar'
-//import 
 
+/**
+* @description App functional component to return multiple componets on routing
+* @return router with multiple components on routing
+*/
 const App = () => {
   return (
     <Router >

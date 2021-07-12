@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import '../scss/loginRegister.scss';
 import User from '../services/user';
 import { useHistory } from "react-router";
+import employee from '../services/employee';
 const user = new User();
 
 /**
@@ -49,6 +50,7 @@ const Login = ({ handleChange }) => {
                     if (res.data.success === true) {
                         //alert(res.data.message)
                         localStorage.setItem('token', res.data.token);
+                        employee.getAllEmployees();
                         history.push('/dashboard');
                     }
                     else {
