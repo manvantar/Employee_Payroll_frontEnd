@@ -28,7 +28,7 @@ import { useHistory } from "react-router";
 import employee from '../services/employee';
 import EmployeeForm from '../pages/EmployeeForm';
 import Card from './card';
-import Popup from "./Popup";
+import Popup from "./employeeForm/Popup";
 import * as employeeService from "../services/employeeService"; 
 
 const drawerWidth = 240;

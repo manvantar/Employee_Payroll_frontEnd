@@ -3,7 +3,6 @@ import Signup  from './pages/register'
 import Login from './pages/login'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import ClippedDrawer from './components/dashboard';
-import navbar from './components/dashboard/navbar';
 import simplecard from './components/card'
 
 /**
