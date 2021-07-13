@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 import { Button } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -26,8 +26,10 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { useHistory } from "react-router";
 import employee from '../services/employee';
+import EmployeeForm from '../pages/EmployeeForm';
 import Card from './card';
-
+import Popup from "./Popup";
+import * as employeeService from "../services/employeeService"; 
 
 const drawerWidth = 240;
 
@@ -87,6 +89,11 @@ export default function PersistentDrawerLeft() {
   const classes = useStyles();
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
+  const [recordForEdit, setRecordForEdit] = useState(null)
+  const [records, setRecords] = useState(employeeService.getAllEmployees())
+  const [openPopup, setOpenPopup] = useState(false)
+  const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
+  const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
 
   /**
   * @description handle drawerOpen, when its called sets setOPen variable to true
@@ -125,6 +132,27 @@ export default function PersistentDrawerLeft() {
     }).catch(error => {
       alert("Something went wrong " + error.message)
     });
+  }
+
+  const addOrEdit = (employee, resetForm) => {
+    if (employee.id === 0)
+      employeeService.insertEmployee(employee)
+    else
+      employeeService.updateEmployee(employee)
+    resetForm()
+    setRecordForEdit(null)
+    setOpenPopup(false)
+    setRecords(employeeService.getAllEmployees())
+    setNotify({
+      isOpen: true,
+      message: 'Submitted Successfully',
+      type: 'success'
+    })
+  }
+
+  const openInPopup = item => {
+    setRecordForEdit(item)
+    setOpenPopup(true)
   }
 
   return (
@@ -193,7 +221,7 @@ export default function PersistentDrawerLeft() {
 
           <ListItem button key="Add">
             <ListItemIcon>{<AddIcon />}</ListItemIcon>
-            <ListItemText primary="Add" />
+            <ListItemText onClick={() => { setOpenPopup(true); setRecordForEdit(null); }} primary="Add" />
           </ListItem>
 
           <ListItem button key='Edit'>
@@ -212,10 +240,19 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >< Card />
-      < Card />< Card />< Card />
-        <div className="drawerHeader">    
+        < Card />< Card />< Card />
+        <div className="drawerHeader">
         </div>
       </main>
+      <Popup
+        title="Employee Form"
+        openPopup={openPopup}
+        setOpenPopup={setOpenPopup}
+      >
+        <EmployeeForm
+          recordForEdit={recordForEdit}
+          addOrEdit={addOrEdit} />
+      </Popup>
     </div>
   );
 }
