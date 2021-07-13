@@ -212,11 +212,8 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >< Card />
-      < Card />
-      < Card />
-        <div className="drawerHeader">
-          < Card />
-          < Card />
+      < Card />< Card />< Card />
+        <div className="drawerHeader">    
         </div>
       </main>
     </div>
