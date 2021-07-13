@@ -8,8 +8,13 @@ class Employee {
     * @description integrating FrontEnd request to Backend Employee Lists API using axious
     * @return response from the backend to Dashboard having Employee details
     */
-    getAllEmployees = () => {
-       return  axios.get("/employees", config);
+    getAllEmployees = async () => {
+       try {
+            const res = await axios.get("/employees", config);
+            return res;
+        } catch (error) {
+            return error;
+        }
     }
 
 }
