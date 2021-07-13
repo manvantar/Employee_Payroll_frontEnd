@@ -1,12 +1,16 @@
-root {
-    display: 'flex',
-  };
-drawer{
-    width: auto;
+.Header{
+  background: linear-gradient(90deg, rgb(33, 10, 235), rgb(181, 236, 29) 100%);
+
 };
-logout{
-    align-items: top-right;
-};
-toolbar{
-  background-color: white;
+.heading{
+  color: rgb(236, 226, 226);
+  font-size: large;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.drawerHeader{
+  display: 'flex';
+  align-items: 'center';
+  justify-content: 'flex-end';
 }

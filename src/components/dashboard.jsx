@@ -26,19 +26,21 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { useHistory } from "react-router";
 import employee from '../services/employee';
+import Card from './card';
+
 
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
 
-  root: {
-    backgroundColor: '#fff',
-    height: 'auto'
-  },
+  // root: {
+  //   backgroundColor: '#fff',
+  //   height: 'auto'
+  // },
   appBar: {
     backgroundColor: '#c0c0c0',
     display: 'flex',
-    alignItems: 'Right',
+    alignItems: 'left',
     justifyContent: 'flex-end',
   },
   appBarShift: {
@@ -53,27 +55,24 @@ const useStyles = makeStyles((theme) => ({
   drawerPaper: {
     width: drawerWidth,
   },
-  drawerHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    // necessary for content to be below app bar
-    justifyContent: 'flex-end',
-  },
   content: {
-    flexGrow: 1,
+    display: 'flex',
+    marginTop: 60,
+    alignItems: 'center',
     padding: theme.spacing(1),
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    marginLeft: -drawerWidth,
+    marginLeft: 20
+
   },
   contentShift: {
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 10,
+    marginLeft: 240,
   },
 
 }));
@@ -113,12 +112,12 @@ export default function PersistentDrawerLeft() {
   }
 
   /**
-  * @description handle Logout button, when its called- clears Local storage and pushes the page to Login
+  * @description handle Lisy button, when its fetches the Employee data from Backend
   */
   const handleList = () => {
     employee.getAllEmployees().then(res => {
       if (res.data.success === true) {
-        console.log(res);        
+        console.log(res);
       }
       else {
         alert("Something went wrong")
@@ -133,11 +132,11 @@ export default function PersistentDrawerLeft() {
       <CssBaseline />
       <AppBar
         position="fixed"
-        className={clsx(classes.appBar, {
+        className={clsx("Header", classes.appBar, {
           [classes.appBarShift]: open,
         })}
       >
-        <Toolbar className=''>
+        <Toolbar>
           <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
@@ -146,8 +145,8 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h8" noWrap>
-            Employee Payroll
+          <Typography variant="h8" className='heading' >
+            EMPLOYEE PAYROLL
           </Typography>
           <Grid container
             alignItems="center">
@@ -212,9 +211,13 @@ export default function PersistentDrawerLeft() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-      >
-        <div className={classes.drawerHeader} />
-
+      >< Card />
+      < Card />
+      < Card />
+        <div className="drawerHeader">
+          < Card />
+          < Card />
+        </div>
       </main>
     </div>
   );

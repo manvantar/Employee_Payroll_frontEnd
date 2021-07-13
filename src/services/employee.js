@@ -9,12 +9,7 @@ class Employee {
     * @return response from the backend to Dashboard having Employee details
     */
     getAllEmployees = () => {
-        try {
-            const res = axios.get("/employees", config);
-            return res;
-        } catch (error) {
-            return error;
-        }
+       return  axios.get("/employees", config);
     }
 
 }
