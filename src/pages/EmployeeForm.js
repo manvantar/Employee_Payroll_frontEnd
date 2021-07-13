@@ -5,12 +5,6 @@ import { useForm, Form } from '../components/useForm';
 import * as employeeService from "../services/employeeService";
 
 
-const genderItems = [
-    { id: 'male', title: 'Male' },
-    { id: 'female', title: 'Female' },
-    { id: 'other', title: 'Other' },
-]
-
 const initialFValues = {
     id: 0,
     fullName: '',
@@ -69,13 +63,20 @@ export default function EmployeeForm(props) {
     return (
         <Form onSubmit={handleSubmit}>
             <Grid container>
-                <Grid item xs={6}>
+                <Grid item xs={6}>                
                     <Controls.Input
                         name="fullName"
                         label="Full Name"
                         value={values.fullName}
                         onChange={handleInputChange}
                         error={errors.fullName}
+                    />
+                    <Controls.Input
+                        name="lastName"
+                        label="Last Name"
+                        // value={values.fullName}
+                        // onChange={handleInputChange}
+                        // error={errors.fullName}
                     />
                     <Controls.Input
                         label="Email"
@@ -91,21 +92,30 @@ export default function EmployeeForm(props) {
                         onChange={handleInputChange}
                         error={errors.mobile}
                     />
+                   
+
+                </Grid>
+                <Grid item xs={6}>
                     <Controls.Input
                         label="City"
                         name="city"
                         value={values.city}
                         onChange={handleInputChange}
                     />
-
-                </Grid>
-                <Grid item xs={6}>
-                    <Controls.RadioGroup
-                        name="gender"
-                        label="Gender"
-                        value={values.gender}
+                    <Controls.Input
+                        label="Salary"
+                        name="salary"
+                        // value={values.mobile}
+                        // onChange={handleInputChange}
+                        // error={errors.mobile}
+                    />
+                    <Controls.Select
+                        name="company"
+                        label="Company-Name"
+                        value={values.designation}
                         onChange={handleInputChange}
-                        items={genderItems}
+                        options={employeeService.getDesignationCollection()}
+                        error={errors.designation}
                     />
                     <Controls.Select
                         name="departmentId"
@@ -114,12 +124,6 @@ export default function EmployeeForm(props) {
                         onChange={handleInputChange}
                         options={employeeService.getDesignationCollection()}
                         error={errors.designation}
-                    />
-                        <Controls.Checkbox
-                        name="isPermanent"
-                        label="Permanent Employee"
-                        value={values.isPermanent}
-                        onChange={handleInputChange}
                     />
 
                     <div>
