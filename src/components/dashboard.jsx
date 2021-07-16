@@ -28,6 +28,7 @@ import { useHistory } from "react-router";
 import employee from '../services/employee';
 import EmployeeForm from '../pages/EmployeeForm';
 import Card from './card';
+//import Card2 from './card2';
 import Popup from "./employeeForm/Popup";
 import * as employeeService from "../services/employeeService"; 
 
@@ -70,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
 
   },
   contentShift: {
+    display: 'flex',
     transition: theme.transitions.create('margin', {
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
@@ -94,7 +96,7 @@ export default function PersistentDrawerLeft() {
   const [openPopup, setOpenPopup] = useState(false)
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
-
+  let EmployeeData;
   /**
   * @description handle drawerOpen, when its called sets setOPen variable to true
   */
@@ -124,7 +126,8 @@ export default function PersistentDrawerLeft() {
   const handleList = () => {
     employee.getAllEmployees().then(res => {
       if (res.data.success === true) {
-        console.log(res);
+        EmployeeData=res.data.EmployeeData;
+        console.log(EmployeeData);
       }
       else {
         alert("Something went wrong")
@@ -240,9 +243,9 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >< Card />
-        < Card />< Card />< Card />
+{/*        
         <div className="drawerHeader">
-        </div>
+        </div> */}
       </main>
       <Popup
         title="Employee Form"
