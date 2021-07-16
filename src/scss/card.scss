@@ -1,5 +1,6 @@
 .root{ 
-    max-width: 300px;
+    max-width: 400px;
+    min-width: 250px;
     margin-bottom:20px;
     margin-top: 20px;
     margin-right:20px;
@@ -14,4 +15,5 @@
 .pos{ 
     margin-bottom: 5;
     font-size: 16;
+    font-weight: bold;
 };

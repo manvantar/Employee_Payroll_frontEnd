@@ -1,6 +1,6 @@
 import axios from 'axios';
 axios.defaults.baseURL = process.env.React_App_BASEURL;
-const config = { headers: { 'Authorization': localStorage.getItem("token") } }
+let config = { headers: { 'Authorization': localStorage.getItem("token") } }
 
 class Employee {
 
