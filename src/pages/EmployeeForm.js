@@ -61,6 +61,7 @@ export default function EmployeeForm(props) {
         e.preventDefault()
         if (validate()) {
             let employeeData = {
+                "id":0,
                 "firstName": values.firstName,
                 "lastName": values.lastName,
                 "emailId": values.email,
@@ -69,18 +70,7 @@ export default function EmployeeForm(props) {
                 "salary": values.salary,
                 "city": values.city
               };
-            employee.insertEmployees(employeeData).then(res => {
-                if (res.data.success === true) {
-                 alert(res.data.message);
-                }
-                else {
-                  alert("Something went wrong")
-                }
-              }).catch(error => {
-                alert("Something went wrong " + error.message)
-              });
-            
-            addOrEdit(values, resetForm);
+            addOrEdit(employeeData, resetForm);
         }
     }
 

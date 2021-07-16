@@ -31,6 +31,7 @@ import Card from './card';
 //import Card2 from './card2';
 import Popup from "./employeeForm/Popup";
 import * as employeeService from "../services/employeeService";
+import employeeService2 from "../services/employee";
 
 const drawerWidth = 240;
 
@@ -143,8 +144,27 @@ export default function PersistentDrawerLeft() {
   }
 
   const addOrEdit = (employee, resetForm) => {
-    if (employee.id === 0)
-      employeeService.insertEmployee(employee)
+    if (employee.id === 0) {
+      let employeeData = {
+        "firstName": employee.firstName,
+        "lastName": employee.lastName,
+        "emailId": employee.emailId,
+        "company": employee.company,
+        "designation": employee.designation,
+        "salary": employee.salary,
+        "city": employee.city
+      };
+      employeeService2.insertEmployees(employeeData).then(res => {
+        if (res.data.success === true) {
+          alert(res.data.message);
+        }
+        else {
+          alert("Something went wrong")
+        }
+      }).catch(error => {
+        alert("Something went wrong " + error.message)
+      });
+    }
     else
       employeeService.updateEmployee(employee)
     resetForm()
