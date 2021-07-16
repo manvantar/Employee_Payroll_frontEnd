@@ -16,15 +16,17 @@ import { useHistory } from "react-router";
 import '../scss/card.scss'
 
 const SimpleCard = (props) => {
+  const EmployeeData = props.EmployeeData
+
   const history = useHistory();
   const handleEdit=()=>{
       return "";
   };
   const handleDelete=()=>{
-    console.log(props.ObjectId)
+  //  console.log(listItems);
   };
 
-  return (
+  return EmployeeData.map((employee)=>
     <div className="root">
       <Card >
         <CardContent>
@@ -32,28 +34,28 @@ const SimpleCard = (props) => {
             objectId:{Employee.ObjectId} */}
           {/* </Typography> */}
           <Typography className="pos">
-            {props.firstName} <a>(firstName) </a>
+            {employee.FirstName} <a>(firstName) </a>
           </Typography>
           <Typography className="pos">
-            {props.LastName}(lastName)
+            {employee.LastName}(lastName)
           </Typography>
           <Typography className="pos">
-            {props.EmailId}(email)
+            {employee.EmailId}(email)
           </Typography>
           <Typography className="pos">
-            {props.PhoneNumber}(mobile)
+            {employee.PhoneNumber}(mobile)
           </Typography>
           <Typography className="pos">
-            {props.Designation}(jobTitle)
+            {employee.Designation}(jobTitle)
           </Typography>
           <Typography className="pos">
-            {props.Company}(company)
+            {employee.Company}(company)
           </Typography>
           <Typography className="pos">
-            {props.Location}(location)
+            {employee.Location}(location)
           </Typography>
           <Typography className="pos">
-            {props.Salary}(salary)
+            {employee.Salary}(salary)
           </Typography>
         </CardContent>
         <CardActions disableSpacing>

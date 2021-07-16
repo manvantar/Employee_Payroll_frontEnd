@@ -97,12 +97,21 @@ export default function PersistentDrawerLeft() {
   const [openPopup, setOpenPopup] = useState(false)
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
-  let EmployeeData;
-  const Employee = {
-    ObjectId: "601212787dscsdsd", FirstName: "Manu", LastName: "KV", EmailId: "test@test.com",
-    PhoneNumber: "9663393660", Company: "Infosys", Designation: "Software",
+   var EmployeeData;
+   EmployeeData = [{
+    ObjectId: "601212787dscsdsd", FirstName: "Suman", LastName: "VK", EmailId: "test@test.com",
+    PhoneNumber: "9323393660", Company: "Infosys", Designation: "Software",
+    Salary: "4000", Location: "Mysuru"
+  },{
+    ObjectId: "Aasaas@adslasdas", FirstName: "harish", LastName: "K", EmailId: "QWasass@test.com",
+    PhoneNumber: "68766754675", Company: "Infosys", Designation: "Manager",
+    Salary: "10000", Location: "Mangaluru"
+  },
+  {
+    ObjectId: "601212787dscsdsd", FirstName: "Manu", LastName: "KV", EmailId: "NEasas@test.com",
+    PhoneNumber: "9663393660", Company: "Infosys", Designation: "HR",
     Salary: "10000", Location: "Bengaluru"
-  };
+  }];
   /**
   * @description handle drawerOpen, when its called sets setOPen variable to true
   */
@@ -133,6 +142,7 @@ export default function PersistentDrawerLeft() {
     employee.getAllEmployees().then(res => {
       if (res.data.success === true) {
         EmployeeData = res.data.EmployeeData;
+        //localStorage.setItem('EmployeeData', EmployeeData);
         console.log(EmployeeData);
       }
       else {
@@ -142,6 +152,7 @@ export default function PersistentDrawerLeft() {
       alert("Something went wrong " + error.message)
     });
   }
+  // handleList();
 
   const addOrEdit = (employee, resetForm) => {
     if (employee.id === 0) {
@@ -267,9 +278,11 @@ export default function PersistentDrawerLeft() {
         className={clsx(classes.content, {
           [classes.contentShift]: open,
         })}
-      >< Card ObjectId={Employee.ObjectId} firstName={Employee.FirstName} LastName={Employee.LastName} EmailId={Employee.EmailId}
+      >
+        <Card EmployeeData={EmployeeData} />
+        {/* < Card ObjectId={Employee.ObjectId} firstName={Employee.FirstName} LastName={Employee.LastName} EmailId={Employee.EmailId}
         PhoneNumber={Employee.PhoneNumber} Company={Employee.Company} Designation={Employee.Designation}
-        Salary={Employee.Salary} Location={Employee.Location} />
+        Salary={Employee.Salary} Location={Employee.Location} /> */}
         {/*        
         <div className="drawerHeader">
         </div> */}
