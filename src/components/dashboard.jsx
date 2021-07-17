@@ -262,10 +262,10 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >
-        <Grid  xs={12} container
+        <Grid  container
             direction="row"
             justifyContent="left"
-            alignItems="left">
+            alignItems="center">
         <Card EmployeeData={employeeRecords} />
         </Grid>
       </main>

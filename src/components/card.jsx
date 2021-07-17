@@ -2,15 +2,8 @@ import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-// import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-// import Paper from '@material-ui/core/Paper';
-// import FavoriteIcon from '@material-ui/icons/Favorite';
 import IconButton from '@material-ui/core/IconButton';
-// import ShareIcon from '@material-ui/icons/Share';
-// import ListItemIcon from '@material-ui/core/ListItemIcon';
-// import ListItemText from '@material-ui/core/ListItemText';
-import { Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useHistory } from "react-router";
@@ -62,12 +55,12 @@ const SimpleCard = (props) => {
               {employee.salary}(salary)
             </Typography>
           </CardContent>
-          <CardActions >
-            <IconButton aria-label="add to favorites">
+          <CardActions  className="cardActions" >
+            <IconButton>
               <EditIcon onClick={handleEdit}></EditIcon>
               {/* <ListItemText primary='Edit' /> */}
             </IconButton>
-            <IconButton aria-label="share">
+            <IconButton >
               <DeleteIcon setRecordForDelete={employee_id = employee._id} onClick={handleDelete}></DeleteIcon>
               {/* <ListItemText primary='Delete' /> */}
             </IconButton>
