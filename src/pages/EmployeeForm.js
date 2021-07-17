@@ -66,6 +66,7 @@ export default function EmployeeForm(props) {
                 "lastName": values.lastName,
                 "emailId": values.email,
                 "company": values.company,
+                "mobile": values.mobile,
                 "designation": values.designation,
                 "salary": values.salary,
                 "city": values.city

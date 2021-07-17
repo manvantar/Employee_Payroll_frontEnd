@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
@@ -17,60 +17,68 @@ import '../scss/card.scss'
 
 const SimpleCard = (props) => {
   const EmployeeData = props.EmployeeData
-
+  var [employee_id, setRecordForDelete] = useState('');
   const history = useHistory();
-  const handleEdit=()=>{
-      return "";
+  const handleEdit = () => {
+    return "";
   };
-  const handleDelete=()=>{
-  //  console.log(listItems);
+  const handleDelete = () => {
+     console.log(employee_id);
+     setRecordForDelete(employee_id=null);
   };
 
-  return EmployeeData.map((employee)=>
-    <div className="root">
-      <Card >
-        <CardContent>
-          {/* <Typography className="title" gutterBottom>
+  if (EmployeeData) {
+
+    return EmployeeData.map((employee) =>
+      <div className="root">
+        <Card >
+          <CardContent>
+            {/* <Typography className="title" gutterBottom>
             objectId:{Employee.ObjectId} */}
-          {/* </Typography> */}
-          <Typography className="pos">
-            {employee.FirstName} <a>(firstName) </a>
-          </Typography>
-          <Typography className="pos">
-            {employee.LastName}(lastName)
-          </Typography>
-          <Typography className="pos">
-            {employee.EmailId}(email)
-          </Typography>
-          <Typography className="pos">
-            {employee.PhoneNumber}(mobile)
-          </Typography>
-          <Typography className="pos">
-            {employee.Designation}(jobTitle)
-          </Typography>
-          <Typography className="pos">
-            {employee.Company}(company)
-          </Typography>
-          <Typography className="pos">
-            {employee.Location}(location)
-          </Typography>
-          <Typography className="pos">
-            {employee.Salary}(salary)
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <EditIcon onClick={handleEdit}></EditIcon>
-            {/* <ListItemText primary='Edit' /> */}
-          </IconButton>
-          <IconButton aria-label="share">
-            <DeleteIcon onClick={handleDelete}></DeleteIcon>
-            {/* <ListItemText primary='Delete' /> */}
-          </IconButton>
-        </CardActions>
-      </Card>
-    </div>
-  );
+            {/* </Typography> */}
+            <Typography className="pos">
+              {employee.firstName} <a>(firstName) </a>
+            </Typography>
+            <Typography className="pos">
+              {employee.lastName}(lastName)
+            </Typography>
+            <Typography className="pos">
+              {employee.emailId}(email)
+            </Typography>
+            <Typography className="pos">
+              {employee.mobile}(mobile)
+            </Typography>
+            <Typography className="pos">
+              {employee.designation}(jobTitle)
+            </Typography>
+            <Typography className="pos">
+              {employee.company}(company)
+            </Typography>
+            <Typography className="pos">
+              {employee.city}(location)
+            </Typography>
+            <Typography className="pos">
+              {employee.salary}(salary)
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <IconButton aria-label="add to favorites">
+              <EditIcon onClick={handleEdit}></EditIcon>
+              {/* <ListItemText primary='Edit' /> */}
+            </IconButton>
+            <IconButton aria-label="share">
+              <DeleteIcon setRecordForDelete={employee_id = employee._id} onClick={handleDelete}></DeleteIcon>
+              {/* <ListItemText primary='Delete' /> */}
+            </IconButton>
+          </CardActions>
+        </Card>
+      </div>
+    );
+  }
+  else 
+    return(
+        <div></div>
+  )
 }
 
 export default SimpleCard;

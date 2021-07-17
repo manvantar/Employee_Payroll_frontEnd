@@ -28,7 +28,6 @@ import { useHistory } from "react-router";
 import employee from '../services/employee';
 import EmployeeForm from '../pages/EmployeeForm';
 import Card from './card';
-//import Card2 from './card2';
 import Popup from "./employeeForm/Popup";
 import * as employeeService from "../services/employeeService";
 import employeeService2 from "../services/employee";
@@ -37,10 +36,6 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
 
-  // root: {
-  //   backgroundColor: '#fff',
-  //   height: 'auto'
-  // },
   appBar: {
     backgroundColor: '#c0c0c0',
     display: 'flex',
@@ -94,24 +89,12 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = React.useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null)
   const [records, setRecords] = useState(employeeService.getAllEmployees())
+  var [employeeRecords, setEmployeeRecords] = useState()
   const [openPopup, setOpenPopup] = useState(false)
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
-   var EmployeeData;
-   EmployeeData = [{
-    ObjectId: "601212787dscsdsd", FirstName: "Suman", LastName: "VK", EmailId: "test@test.com",
-    PhoneNumber: "9323393660", Company: "Infosys", Designation: "Software",
-    Salary: "4000", Location: "Mysuru"
-  },{
-    ObjectId: "Aasaas@adslasdas", FirstName: "harish", LastName: "K", EmailId: "QWasass@test.com",
-    PhoneNumber: "68766754675", Company: "Infosys", Designation: "Manager",
-    Salary: "10000", Location: "Mangaluru"
-  },
-  {
-    ObjectId: "601212787dscsdsd", FirstName: "Manu", LastName: "KV", EmailId: "NEasas@test.com",
-    PhoneNumber: "9663393660", Company: "Infosys", Designation: "HR",
-    Salary: "10000", Location: "Bengaluru"
-  }];
+  // var EmployeeData;
+  
   /**
   * @description handle drawerOpen, when its called sets setOPen variable to true
   */
@@ -141,9 +124,7 @@ export default function PersistentDrawerLeft() {
   const handleList = () => {
     employee.getAllEmployees().then(res => {
       if (res.data.success === true) {
-        EmployeeData = res.data.EmployeeData;
-        //localStorage.setItem('EmployeeData', EmployeeData);
-        console.log(EmployeeData);
+        setEmployeeRecords(employeeRecords=res.data.EmployeeData);
       }
       else {
         alert("Something went wrong")
@@ -152,20 +133,21 @@ export default function PersistentDrawerLeft() {
       alert("Something went wrong " + error.message)
     });
   }
-  // handleList();
+  //handleList();
 
   const addOrEdit = (employee, resetForm) => {
     if (employee.id === 0) {
-      let employeeData = {
+      let employeeAddData = {
         "firstName": employee.firstName,
         "lastName": employee.lastName,
         "emailId": employee.emailId,
         "company": employee.company,
+        "mobile": employee.mobile,
         "designation": employee.designation,
         "salary": employee.salary,
         "city": employee.city
       };
-      employeeService2.insertEmployees(employeeData).then(res => {
+      employeeService2.insertEmployees(employeeAddData).then(res => {
         if (res.data.success === true) {
           alert(res.data.message);
         }
@@ -181,6 +163,7 @@ export default function PersistentDrawerLeft() {
     resetForm()
     setRecordForEdit(null)
     setOpenPopup(false)
+    handleList();
     setRecords(employeeService.getAllEmployees())
     setNotify({
       isOpen: true,
@@ -279,13 +262,8 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >
-        <Card EmployeeData={EmployeeData} />
-        {/* < Card ObjectId={Employee.ObjectId} firstName={Employee.FirstName} LastName={Employee.LastName} EmailId={Employee.EmailId}
-        PhoneNumber={Employee.PhoneNumber} Company={Employee.Company} Designation={Employee.Designation}
-        Salary={Employee.Salary} Location={Employee.Location} /> */}
-        {/*        
-        <div className="drawerHeader">
-        </div> */}
+        <Card EmployeeData={employeeRecords} />
+
       </main>
       <Popup
         title="Employee Form"
