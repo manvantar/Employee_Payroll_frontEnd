@@ -6,23 +6,22 @@ import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
-import { useHistory } from "react-router";
 import '../scss/card.scss'
 
 const SimpleCard = (props) => {
   const EmployeeData = props.EmployeeData
   var [employee_id, setRecordForDelete] = useState('');
-  const history = useHistory();
+
   const handleEdit = () => {
     return "";
   };
+
   const handleDelete = () => {
-     console.log(employee_id);
-     setRecordForDelete(employee_id=null);
+    console.log(employee_id);
+    setRecordForDelete(employee_id = null);
   };
 
   if (EmployeeData) {
-
     return EmployeeData.map((employee) =>
       <div className="root">
         <Card >
@@ -55,7 +54,7 @@ const SimpleCard = (props) => {
               {employee.salary}(salary)
             </Typography>
           </CardContent>
-          <CardActions  className="cardActions" >
+          <CardActions className="cardActions" >
             <IconButton>
               <EditIcon onClick={handleEdit}></EditIcon>
               {/* <ListItemText primary='Edit' /> */}
@@ -69,10 +68,10 @@ const SimpleCard = (props) => {
       </div>
     );
   }
-  else 
-    return(
-        <div></div>
-  )
+  else
+    return (
+      <div></div>
+    )
 }
 
 export default SimpleCard;
