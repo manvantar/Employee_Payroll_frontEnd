@@ -262,8 +262,12 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >
+        <Grid  xs={12} container
+            direction="row"
+            justifyContent="left"
+            alignItems="left">
         <Card EmployeeData={employeeRecords} />
-
+        </Grid>
       </main>
       <Popup
         title="Employee Form"

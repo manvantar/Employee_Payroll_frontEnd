@@ -10,6 +10,7 @@ import IconButton from '@material-ui/core/IconButton';
 // import ShareIcon from '@material-ui/icons/Share';
 // import ListItemIcon from '@material-ui/core/ListItemIcon';
 // import ListItemText from '@material-ui/core/ListItemText';
+import { Grid } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
 import DeleteIcon from '@material-ui/icons/Delete';
 import { useHistory } from "react-router";
@@ -61,7 +62,7 @@ const SimpleCard = (props) => {
               {employee.salary}(salary)
             </Typography>
           </CardContent>
-          <CardActions disableSpacing>
+          <CardActions >
             <IconButton aria-label="add to favorites">
               <EditIcon onClick={handleEdit}></EditIcon>
               {/* <ListItemText primary='Edit' /> */}
