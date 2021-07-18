@@ -172,6 +172,9 @@ export default function PersistentDrawerLeft() {
     })
   }
 
+  const onDelete = () => {
+
+  }
   const openInPopup = item => {
     setRecordForEdit(item)
     setOpenPopup(true)
@@ -266,7 +269,17 @@ export default function PersistentDrawerLeft() {
             direction="row"
             justifyContent="left"
             alignItems="center">
-        <Card EmployeeData={employeeRecords} />
+        {/* <Card EmployeeData={employeeRecords} /> */}
+          {employeeRecords ? employeeRecords.map((employee) =>{
+            return (
+              <Card
+                id={employee._id}
+                employee={employee}
+                deleteItem={onDelete}
+                />
+            )
+          }):null}
+
         </Grid>
       </main>
       <Popup
