@@ -32,13 +32,13 @@ class Employee {
     }
 
     /**
-    * @description integrating FrontEnd request to Backend to insert Employee Data using axious
+    * @description integrating FrontEnd request to Backend to Delete Employee Data using axious
     * @return response from the backend to Dashboard having success or failure details
     */
     deleteEmployee = async (employeeId) => {
         let config = { headers: { 'Authorization': localStorage.getItem("token") } }
         try {
-            const res = await axios.delete("/delete/employee/" + employeeId);
+            const res = await axios.delete("/delete/employee/" + employeeId, config);
             return res;
         } catch (error) {
             return error;

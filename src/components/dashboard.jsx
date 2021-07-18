@@ -94,7 +94,7 @@ export default function PersistentDrawerLeft() {
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
   const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
   // var EmployeeData;
-  
+
   /**
   * @description handle drawerOpen, when its called sets setOPen variable to true
   */
@@ -124,7 +124,7 @@ export default function PersistentDrawerLeft() {
   const handleList = () => {
     employee.getAllEmployees().then(res => {
       if (res.data.success === true) {
-        setEmployeeRecords(employeeRecords=res.data.EmployeeData);
+        setEmployeeRecords(employeeRecords = res.data.EmployeeData);
       }
       else {
         alert("Something went wrong")
@@ -149,6 +149,7 @@ export default function PersistentDrawerLeft() {
       };
       employeeService2.insertEmployees(employeeAddData).then(res => {
         if (res.data.success === true) {
+          handleList();
           alert(res.data.message);
         }
         else {
@@ -163,8 +164,6 @@ export default function PersistentDrawerLeft() {
     resetForm()
     setRecordForEdit(null)
     setOpenPopup(false)
-    handleList();
-    setRecords(employeeService.getAllEmployees())
     setNotify({
       isOpen: true,
       message: 'Submitted Successfully',
@@ -172,9 +171,20 @@ export default function PersistentDrawerLeft() {
     })
   }
 
-  const onDelete = () => {
-
+  const onDelete = (id) => {
+    if (id) {
+      employeeService2.deleteEmployee(id).then(res => {
+        if (res.data.success === true) {
+          handleList();
+          alert(res.data.message);
+        }
+      })
+    }
+    else {
+      alert("Something went wrong")
+    }
   }
+
   const openInPopup = item => {
     setRecordForEdit(item)
     setOpenPopup(true)
@@ -265,21 +275,19 @@ export default function PersistentDrawerLeft() {
           [classes.contentShift]: open,
         })}
       >
-        <Grid  container
-            direction="row"
-            justifyContent="left"
-            alignItems="center">
-        {/* <Card EmployeeData={employeeRecords} /> */}
-          {employeeRecords ? employeeRecords.map((employee) =>{
-            return (
-              <Card
-                id={employee._id}
-                employee={employee}
-                deleteItem={onDelete}
+        <Grid container
+          direction="row"
+          justifyContent="left"
+          alignItems="center">
+            {employeeRecords ? employeeRecords.map((employee) => {
+              return (
+                <Card
+                  id={employee._id}
+                  employee={employee}
+                  deleteItem={onDelete}
                 />
-            )
-          }):null}
-
+              )
+            }) : null}
         </Grid>
       </main>
       <Popup

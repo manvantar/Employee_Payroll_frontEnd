@@ -9,20 +9,17 @@ import DeleteIcon from '@material-ui/icons/Delete';
 import '../scss/card.scss'
 
 const SimpleCard = (props) => {
-  const EmployeeData = props.EmployeeData
-  var [employee_id, setRecordForDelete] = useState('');
+  const employee = props.employee
 
   const handleEdit = () => {
-    return "";
+    console.log(employee);
   };
 
   const handleDelete = () => {
-    console.log(employee_id);
-    setRecordForDelete(employee_id = null);
+    props.deleteItem(props.id);
   };
 
-  if (EmployeeData) {
-    return EmployeeData.map((employee) =>
+    return (
       <div className="root">
         <Card >
           <CardContent>
@@ -30,7 +27,7 @@ const SimpleCard = (props) => {
             objectId:{Employee.ObjectId} */}
             {/* </Typography> */}
             <Typography className="pos">
-              {employee.firstName} <a>(firstName) </a>
+              {employee.firstName} (firstName)
             </Typography>
             <Typography className="pos">
               {employee.lastName}(lastName)
@@ -60,18 +57,14 @@ const SimpleCard = (props) => {
               {/* <ListItemText primary='Edit' /> */}
             </IconButton>
             <IconButton >
-              <DeleteIcon setRecordForDelete={employee_id = employee._id} onClick={handleDelete}></DeleteIcon>
+              <DeleteIcon onClick={handleDelete}></DeleteIcon>
               {/* <ListItemText primary='Delete' /> */}
             </IconButton>
           </CardActions>
         </Card>
       </div>
     );
-  }
-  else
-    return (
-      <div></div>
-    )
+  
 }
 
 export default SimpleCard;
