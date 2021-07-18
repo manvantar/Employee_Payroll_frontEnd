@@ -88,11 +88,11 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null)
-  const [records, setRecords] = useState(employeeService.getAllEmployees())
+  //const [records, setRecords] = useState(employeeService.getAllEmployees())
   var [employeeRecords, setEmployeeRecords] = useState()
   const [openPopup, setOpenPopup] = useState(false)
   const [notify, setNotify] = useState({ isOpen: false, message: '', type: '' })
-  const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
+  //const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
   // var EmployeeData;
 
   /**
