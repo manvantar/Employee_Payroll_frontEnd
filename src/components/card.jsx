@@ -12,7 +12,7 @@ const SimpleCard = (props) => {
   const employee = props.employee
 
   const handleEdit = () => {
-    console.log(employee);
+    props.editItem(props.employee);
   };
 
   const handleDelete = () => {

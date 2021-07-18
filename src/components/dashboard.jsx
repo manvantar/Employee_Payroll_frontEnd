@@ -26,8 +26,8 @@ import NotificationsNoneIcon from '@material-ui/icons/NotificationsNone';
 import ChatBubbleOutlineIcon from '@material-ui/icons/ChatBubbleOutline';
 import { useHistory } from "react-router";
 import employee from '../services/employee';
-import EmployeeForm from '../pages/EmployeeForm';
-import Card from './card';
+import EmployeeForm from '../pages/EmployeeForm.jsx';
+import Card from './card.jsx';
 import Popup from "./employeeForm/Popup";
 import * as employeeService from "../services/employeeService";
 import employeeService2 from "../services/employee";
@@ -136,6 +136,7 @@ export default function PersistentDrawerLeft() {
   //handleList();
 
   const addOrEdit = (employee, resetForm) => {
+    //console.log(employee);
     if (employee.id === 0) {
       let employeeAddData = {
         "firstName": employee.firstName,
@@ -185,6 +186,9 @@ export default function PersistentDrawerLeft() {
     }
   }
 
+  const onEdit =(employee) =>{
+    console.log(employee);
+  }
   const openInPopup = item => {
     setRecordForEdit(item)
     setOpenPopup(true)
@@ -285,6 +289,7 @@ export default function PersistentDrawerLeft() {
                   id={employee._id}
                   employee={employee}
                   deleteItem={onDelete}
+                  editItem={onEdit}
                 />
               )
             }) : null}
