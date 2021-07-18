@@ -7,13 +7,13 @@ import Button from "./Button";
 import ActionButton from "./ActionButton";
 
 const Controls = {
-    Input,
-    RadioGroup,
-    Select,
-    Checkbox,
-    DatePicker,
-    Button,
-    ActionButton
-}
+  Input,
+  RadioGroup,
+  Select,
+  Checkbox,
+  DatePicker,
+  Button,
+  ActionButton,
+};
 
 export default Controls;

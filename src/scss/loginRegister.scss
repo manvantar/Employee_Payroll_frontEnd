@@ -1,27 +1,27 @@
-.formStyle{
-    height: 100vh;
+.formStyle {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #949090;
+  .paperStyle {
+    height: auto;
+    width: 400px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: #949090;
-    .paperStyle { 
-        height: auto;
-        width: 400px;
-        display: flex;
-        flex-direction: column;
-        padding: 20px 40px;
-        border-radius: 5px;  
-        background-color: #ffffff;
-        margin: 10px 0;
-    }
-    .btnstyle{
-        margin: 3px 0;
-    }
+    padding: 20px 40px;
+    border-radius: 5px;
+    background-color: #ffffff;
+    margin: 10px 0;
+  }
+  .btnstyle {
+    margin: 3px 0;
+  }
 }
 
-.header { 
-    font-weight: bold;
-    color: blue; 
-    padding: 10
+.header {
+  font-weight: bold;
+  color: blue;
+  padding: 10;
 }

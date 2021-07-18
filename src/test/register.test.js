@@ -1,62 +1,59 @@
-import { shallow, mount } from 'enzyme';
-import Register from '../pages/register';
-import { render, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'
+import { shallow, mount } from "enzyme";
+import Register from "../pages/register";
+import { render, fireEvent } from "@testing-library/react";
+import "@testing-library/jest-dom/extend-expect";
 
-describe('Login test', () => {
-    let wrapper;
-    beforeEach(() => {
-        wrapper = shallow(<Register />);
-    })
+describe("Login test", () => {
+  let wrapper;
+  beforeEach(() => {
+    wrapper = shallow(<Register />);
+  });
 
-    test('render h1 tag text', () => {
-        expect(wrapper.find('h1').text()).toContain("EMPLOYEE PAYROLL");
-    })
+  test("render h1 tag text", () => {
+    expect(wrapper.find("h1").text()).toContain("EMPLOYEE PAYROLL");
+  });
 
-    test('render h2 tag text', () => {
-        expect(wrapper.find('h2').text()).toContain("REGISTRATION");
-    })
+  test("render h2 tag text", () => {
+    expect(wrapper.find("h2").text()).toContain("REGISTRATION");
+  });
+});
 
-})
+describe("Register Page Elements availabity test", () => {
+  test("check elements available", () => {
+    const { getByTestId } = render(<Register />);
+    const logo = getByTestId("avatar");
+    const form = getByTestId("form");
+    const firstName = getByTestId("firstName");
+    const lastName = getByTestId("lastName");
+    const email = getByTestId("email");
+    const password = getByTestId("password");
+    const confirmPassword = getByTestId("confirmPassword");
+    const button = getByTestId("submitButton");
 
-describe('Register Page Elements availabity test', () => {
+    expect(logo).toBeInTheDocument();
+    expect(form).toBeInTheDocument();
+    expect(firstName).toBeInTheDocument();
+    expect(lastName).toBeInTheDocument();
+    expect(button).toBeInTheDocument();
+    expect(email).toBeInTheDocument();
+    expect(password).toBeInTheDocument();
+    expect(confirmPassword).toBeInTheDocument();
+  });
 
-    test('check elements available', () => {
-        const { getByTestId } = render(<Register />);
-        const logo = getByTestId('avatar');
-        const form = getByTestId('form');
-        const firstName = getByTestId('firstName');
-        const lastName = getByTestId('lastName');
-        const email = getByTestId('email');
-        const password = getByTestId('password');
-        const confirmPassword = getByTestId('confirmPassword');
-        const button = getByTestId('submitButton');
+  test("check Register page elements value", () => {
+    const { getByTestId } = render(<Register />);
+    const email = getByTestId("email");
+    const password = getByTestId("password");
+    const button = getByTestId("submitButton");
+    const firstName = getByTestId("firstName");
+    const lastName = getByTestId("lastName");
+    const confirmPassword = getByTestId("confirmPassword");
 
-        expect(logo).toBeInTheDocument();
-        expect(form).toBeInTheDocument();
-        expect(firstName).toBeInTheDocument();
-        expect(lastName).toBeInTheDocument();
-        expect(button).toBeInTheDocument();
-        expect(email).toBeInTheDocument();
-        expect(password).toBeInTheDocument();
-        expect(confirmPassword).toBeInTheDocument();
-    });
-
-    test('check Register page elements value', () => {
-        const { getByTestId } = render(<Register />);
-        const email = getByTestId('email');
-        const password = getByTestId('password');
-        const button = getByTestId('submitButton');
-        const firstName = getByTestId('firstName');
-        const lastName = getByTestId('lastName');
-        const confirmPassword = getByTestId('confirmPassword');
-        
-        expect(firstName).toHaveTextContent('First Name');
-        expect(lastName).toHaveTextContent('Last Name');
-        expect(email).toHaveTextContent('Email Address');
-        expect(password).toHaveTextContent('Password');
-        expect(confirmPassword).toHaveTextContent('Confirm Password');       
-        expect(button).toHaveTextContent('Register');
-    });
-    
+    expect(firstName).toHaveTextContent("First Name");
+    expect(lastName).toHaveTextContent("Last Name");
+    expect(email).toHaveTextContent("Email Address");
+    expect(password).toHaveTextContent("Password");
+    expect(confirmPassword).toHaveTextContent("Confirm Password");
+    expect(button).toHaveTextContent("Register");
+  });
 });
