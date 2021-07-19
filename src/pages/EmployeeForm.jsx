@@ -5,7 +5,6 @@ import { useForm, Form } from "../components/employeeForm/useForm";
 //import employee from "../services/employee";
 
 const initialFValues = {
-  id: 0,
   firstName: "",
   lastName: "",
   email: "",
@@ -22,7 +21,6 @@ const initialFValues = {
  */
 export default function EmployeeForm(props) {
   const { addOrEdit, recordForEdit } = props;
-  console.log(addOrEdit, recordForEdit );
 
   /**
   * @description Validates the form
@@ -68,7 +66,6 @@ export default function EmployeeForm(props) {
     e.preventDefault();
     if (validate()) {
       let employeeData = {
-        id: 0,
         firstName: values.firstName,
         lastName: values.lastName,
         emailId: values.email,

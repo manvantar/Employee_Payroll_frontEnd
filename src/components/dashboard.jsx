@@ -85,6 +85,8 @@ export default function PersistentDrawerLeft() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null);
+  const [employeeIdEdit, setIdForEdit] = useState(null);
+  const [addoredit, setOperation] = useState("add");
   //const [records, setRecords] = useState(employeeService.getAllEmployees())
   var [employeeRecords, setEmployeeRecords] = useState();
   const [openPopup, setOpenPopup] = useState(false);
@@ -141,18 +143,17 @@ export default function PersistentDrawerLeft() {
    * @description handle addorEdit request button, when we want to add Employee data Edit
    */
   const addOrEdit = (employee, resetForm) => {
-    //console.log(employee);
-    if (employee.id === 0) {
-      let employeeAddData = {
-        firstName: employee.firstName,
-        lastName: employee.lastName,
-        emailId: employee.emailId,
-        company: employee.company,
-        mobile: employee.mobile,
-        designation: employee.designation,
-        salary: employee.salary,
-        city: employee.city,
-      };
+    const employeeAddData = {
+      firstName: employee.firstName,
+      lastName: employee.lastName,
+      emailId: employee.emailId,
+      company: employee.company,
+      mobile: employee.mobile,
+      designation: employee.designation,
+      salary: employee.salary,
+      city: employee.city,
+    };
+    if (addoredit === "add") {
       employeeService2
         .insertEmployees(employeeAddData)
         .then((res) => {
@@ -166,8 +167,23 @@ export default function PersistentDrawerLeft() {
         .catch((error) => {
           alert("Something went wrong " + error.message);
         });
-    } else employeeService.updateEmployee(employee);
+    } else{
+      employeeService2
+        .updateEmployee(employeeAddData, employeeIdEdit)
+        .then((res) => {
+          if (res.data.success === true) {
+            handleList();
+            alert(res.data.message);
+          } else {
+            alert("Something went wrong");
+          }
+        })
+        .catch((error) => {
+          alert("Something went wrong " + error.message);
+        });
+    }
     resetForm();
+    setOperation("add");
     setRecordForEdit(null);
     setOpenPopup(false);
     setNotify({
@@ -199,6 +215,8 @@ export default function PersistentDrawerLeft() {
 
   const openInPopup = (item) => {
     setRecordForEdit(item);
+    setIdForEdit(item._id);
+    setOperation("edit");
     setOpenPopup(true);
   };
 
