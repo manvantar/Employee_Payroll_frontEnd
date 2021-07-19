@@ -142,7 +142,7 @@ export default function PersistentDrawerLeft() {
         });
       });
   };
-  //handleList();
+  handleList();
 
   /**
    * @description handle addorEdit request button, when we want to add Employee data Edit

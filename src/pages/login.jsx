@@ -1,12 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Paper,
   Avatar,
   TextField,
   Button,
-  Typography,
-  Snackbar,
+  Typography
 } from "@material-ui/core";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -16,6 +15,7 @@ import "../scss/loginRegister.scss";
 import User from "../services/user";
 import auth from "../services/auth";
 import { useHistory } from "react-router";
+import Notification from "../components/employeeForm/Notification";
 const user = new User();
 
 /**
@@ -25,9 +25,12 @@ const user = new User();
  */
 const Login = ({ handleChange }) => {
   const history = useHistory();
-  const [open, SetOpen] = React.useState(false);
   const avatarStyle = { backgroundColor: "red" };
-
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
   const initialValues = {
     email: "",
     password: "",
@@ -47,7 +50,6 @@ const Login = ({ handleChange }) => {
    * @params takes input as values and props
    */
   const onSubmit = (values, props) => {
-    SetOpen(true);
     if (values) {
       const credentials = {
         emailId: values.email,
@@ -62,22 +64,23 @@ const Login = ({ handleChange }) => {
               history.push("/dashboard");
             });
           } else {
-            alert("Something went wrong");
+            setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
           }
         })
         .catch((error) => {
-          alert("Something went wrong " + error.message);
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong "+error.message,
+            type: "error",
+          });
         });
       props.resetForm();
       props.setSubmitting(false);
     }
-  };
-
-  const handleClose = (event, reason) => {
-    if (reason === "clickaway") {
-      return;
-    }
-    SetOpen(false);
   };
 
   return (
@@ -149,24 +152,9 @@ const Login = ({ handleChange }) => {
               Register
             </Link>
           </Typography>
-        </Paper>
-        <Snackbar
-          anchorOrigin={{
-            vertical: "bottom",
-            horizontal: "left",
-          }}
-        >
-          open={open}
-          autoHideDuration={1000}
-          onClose={handleClose}
-          message="I'm SnackBar" action=
-          {
-            <React.Fragment>
-              <Button onClick={handleClose}>Click me </Button>
-            </React.Fragment>
-          }
-        </Snackbar>
+        </Paper>        
       </Grid>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 };
