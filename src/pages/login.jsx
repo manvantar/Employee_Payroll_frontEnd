@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import * as Yup from "yup";
 import "../scss/loginRegister.scss";
 import User from "../services/user";
+import auth from "../services/auth";
 import { useHistory } from "react-router";
 const user = new User();
 
@@ -58,7 +59,11 @@ const Login = ({ handleChange }) => {
           if (res.data.success === true) {
             //alert(res.data.message)
             localStorage.setItem("token", res.data.token);
-            history.push("/dashboard");
+            //console.log(auth.isAuthenticated);
+            auth.login(() => {
+           //   console.log(auth.isAuthenticated);
+              history.push("/dashboard");
+            });
           } else {
             alert("Something went wrong");
           }

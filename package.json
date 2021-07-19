@@ -16,6 +16,7 @@
     "env-cmd": "^10.1.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "formik": "^2.2.9",
+    "js-cookie": "^2.2.1",
     "react": "^16.8.0",
     "react-bootstrap": "^1.6.1",
     "react-dom": "^16.8.0",

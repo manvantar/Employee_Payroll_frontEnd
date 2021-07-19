@@ -2,14 +2,24 @@ import axios from "axios";
 axios.defaults.baseURL = process.env.React_App_BASEURL;
 
 class Employee {
+  
+  /**
+   * @description integrating FrontEnd request to Backend Employee Lists API using axious
+   * @return response from the backend to Dashboard having Employee details
+   */
+  getToken =  () => {
+    const headers=  { headers: { Authorization: localStorage.getItem("token") } };
+    return headers;
+  };
+
   /**
    * @description integrating FrontEnd request to Backend Employee Lists API using axious
    * @return response from the backend to Dashboard having Employee details
    */
   getAllEmployees = async () => {
-    let config = { headers: { Authorization: localStorage.getItem("token") } };
+    const headers = this.getToken();
     try {
-      const res = await axios.get("/employees", config);
+      const res = await axios.get("/employees", headers);
       return res;
     } catch (error) {
       return error;
@@ -21,9 +31,9 @@ class Employee {
    * @return response from the backend to Dashboard having success or failure details
    */
   insertEmployees = async (data) => {
-    let config = { headers: { Authorization: localStorage.getItem("token") } };
+    const headers = this.getToken();
     try {
-      const res = await axios.post("/add/employee", data, config);
+      const res = await axios.post("/add/employee", data, headers);
       return res;
     } catch (error) {
       return error;
@@ -35,9 +45,12 @@ class Employee {
    * @return response from the backend to Dashboard having success or failure details
    */
   deleteEmployee = async (employeeId) => {
-    let config = { headers: { Authorization: localStorage.getItem("token") } };
+    const headers = this.getToken();
     try {
-      const res = await axios.delete("/delete/employee/" + employeeId, config);
+      const res = await axios.delete(
+        "/delete/employee/" + employeeId,
+        headers
+      );
       return res;
     } catch (error) {
       return error;

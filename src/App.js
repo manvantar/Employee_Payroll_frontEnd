@@ -2,9 +2,8 @@ import "./scss/App.scss";
 import Signup from "./pages/register";
 import Login from "./pages/login";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import ClippedDrawer from "./components/dashboard";
-import simplecard from "./components/card";
-
+import dashboard from "./components/dashboard";
+import ProtectedRouter from "./services/protectedRouter.js";
 /**
  * @description App functional component to return multiple componets on routing
  * @return router with multiple components on routing
@@ -17,8 +16,7 @@ const App = () => {
           <Route exact path="/" component={Signup} />
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={ClippedDrawer} />
-          <Route path="/card" component={simplecard} />
+          <Route path="/dashboard" component={dashboard} />
         </Switch>
       </div>
     </Router>

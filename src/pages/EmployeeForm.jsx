@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Controls from "../components/controls/Controls";
 import { useForm, Form } from "../components/employeeForm/useForm";
-import employee from "../services/employee";
+//import employee from "../services/employee";
 
 const initialFValues = {
   id: 0,
@@ -15,9 +15,19 @@ const initialFValues = {
   designation: "",
 };
 
+/**
+ * @description Employee functional component to return Employee form Page
+ * @param handlechange when the values changes in the form
+ * @return Employee form page component
+ */
 export default function EmployeeForm(props) {
   const { addOrEdit, recordForEdit } = props;
+  console.log(addOrEdit, recordForEdit );
 
+  /**
+  * @description Validates the form
+  * @return Error if values have any error
+  */
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("firstName" in fieldValues)

@@ -137,6 +137,9 @@ export default function PersistentDrawerLeft() {
   };
   //handleList();
 
+  /**
+   * @description handle addorEdit request button, when we want to add Employee data Edit
+   */
   const addOrEdit = (employee, resetForm) => {
     //console.log(employee);
     if (employee.id === 0) {
@@ -174,6 +177,9 @@ export default function PersistentDrawerLeft() {
     });
   };
 
+  /**
+   * @description handle Ondelete request button, when we want to Delete and Employee data
+   */
   const onDelete = (id) => {
     if (id) {
       employeeService2.deleteEmployee(id).then((res) => {
@@ -188,8 +194,9 @@ export default function PersistentDrawerLeft() {
   };
 
   const onEdit = (employee) => {
-    console.log(employee);
+    openInPopup(employee);
   };
+
   const openInPopup = (item) => {
     setRecordForEdit(item);
     setOpenPopup(true);
@@ -241,7 +248,6 @@ export default function PersistentDrawerLeft() {
           </Grid>
         </Toolbar>
       </AppBar>
-
       <Drawer
         className="drawer"
         variant="persistent"
@@ -266,7 +272,6 @@ export default function PersistentDrawerLeft() {
             <ListItemIcon>{<ListIcon />}</ListItemIcon>
             <ListItemText type="submit" onClick={handleList} primary="List" />
           </ListItem>
-
           <ListItem button key="Add">
             <ListItemIcon>{<AddIcon />}</ListItemIcon>
             <ListItemText
@@ -277,12 +282,10 @@ export default function PersistentDrawerLeft() {
               primary="Add"
             />
           </ListItem>
-
           <ListItem button key="Edit">
             <ListItemIcon>{<EditIcon />}</ListItemIcon>
             <ListItemText primary="Edit" />
           </ListItem>
-
           <ListItem button key="Delete">
             <ListItemIcon>{<DeleteIcon />}</ListItemIcon>
             <ListItemText primary="Delete" />
