@@ -17,6 +17,7 @@ const App = () => {
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
           <Route path="/dashboard" component={dashboard} />
+          <Route path="*" component={()=>{return(<h1>Error 404 page not found</h1>)}} />
         </Switch>
       </div>
     </Router>
