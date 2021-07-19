@@ -37,7 +37,7 @@ export default function EmployeeForm(props) {
         : "Email is not valid.";
     if ("mobile" in fieldValues)
       temp.mobile =
-        fieldValues.mobile.length > 9 ? "" : "Minimum 10 numbers required.";
+        fieldValues.mobile.length >=9 ? "" : "Minimum 10 numbers required.";
     if ("salary" in fieldValues)
       temp.salary =
         fieldValues.salary.length > 3 ? "" : "Minimum 3 numbers required.";
@@ -105,7 +105,7 @@ export default function EmployeeForm(props) {
           />
           <Controls.Input
             label="Email"
-            name="email"
+            name="emailId"
             value={values.emailId}
             onChange={handleInputChange}
             error={errors.emailId}
