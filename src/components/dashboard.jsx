@@ -26,7 +26,7 @@ import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import { useHistory } from "react-router";
 import employee from "../services/employee";
-import EmployeeForm from "../pages/EmployeeForm.jsx";
+import EmployeeForm from "./EmployeeForm.jsx";
 import Card from "./card.jsx";
 import Popup from "./employeeForm/Popup";
 import employeeService2 from "../services/employee";
