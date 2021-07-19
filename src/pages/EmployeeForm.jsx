@@ -83,7 +83,7 @@ export default function EmployeeForm(props) {
       setValues({
         ...recordForEdit,
       });
-  }, [recordForEdit]);
+  }, [recordForEdit]); // eslint-disable-next-line 
 
   return (
     <Form onSubmit={handleSubmit}>

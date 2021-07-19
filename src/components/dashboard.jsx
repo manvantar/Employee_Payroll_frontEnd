@@ -30,6 +30,7 @@ import EmployeeForm from "../pages/EmployeeForm.jsx";
 import Card from "./card.jsx";
 import Popup from "./employeeForm/Popup";
 import employeeService2 from "../services/employee";
+import Notification from "./employeeForm/Notification";
 
 const drawerWidth = 240;
 
@@ -86,7 +87,6 @@ export default function PersistentDrawerLeft() {
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [employeeIdEdit, setIdForEdit] = useState(null);
   const [addoredit, setOperation] = useState("add");
-  //const [records, setRecords] = useState(employeeService.getAllEmployees())
   var [employeeRecords, setEmployeeRecords] = useState();
   const [openPopup, setOpenPopup] = useState(false);
   const [notify, setNotify] = useState({
@@ -94,8 +94,6 @@ export default function PersistentDrawerLeft() {
     message: "",
     type: "",
   });
-  //const [confirmDialog, setConfirmDialog] = useState({ isOpen: false, title: '', subTitle: '' })
-  // var EmployeeData;
 
   /**
    * @description handle drawerOpen, when its called sets setOPen variable to true
@@ -129,11 +127,19 @@ export default function PersistentDrawerLeft() {
         if (res.data.success === true) {
           setEmployeeRecords((employeeRecords = res.data.EmployeeData));
         } else {
-          alert("Something went wrong");
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong",
+            type: "error",
+          });
         }
       })
       .catch((error) => {
-        alert("Something went wrong " + error.message);
+        setNotify({
+          isOpen: true,
+          message: "Something went wrong " + error.message,
+          type: "error",
+        });
       });
   };
   //handleList();
@@ -142,6 +148,11 @@ export default function PersistentDrawerLeft() {
    * @description handle addorEdit request button, when we want to add Employee data Edit
    */
   const addOrEdit = (employee, resetForm) => {
+    setNotify({
+      isOpen: true,
+      message: "Submitted Successfully",
+      type: "success",
+    });
     const employeeAddData = {
       firstName: employee.firstName,
       lastName: employee.lastName,
@@ -157,39 +168,58 @@ export default function PersistentDrawerLeft() {
         .insertEmployees(employeeAddData)
         .then((res) => {
           if (res.data.success === true) {
+            setNotify({
+              isOpen: true,
+              message: res.data.message,
+              type: "success",
+            });
             handleList();
-            alert(res.data.message);
           } else {
-            alert("Something went wrong");
+            setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
           }
         })
         .catch((error) => {
-          alert("Something went wrong " + error.message);
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong " + error.message,
+            type: "error",
+          });
         });
-    } else{
+    } else {
       employeeService2
         .updateEmployee(employeeAddData, employeeIdEdit)
         .then((res) => {
           if (res.data.success === true) {
             handleList();
-            alert(res.data.message);
+            setNotify({
+              isOpen: true,
+              message: res.data.message,
+              type: "success",
+            });
           } else {
-            alert("Something went wrong");
+            setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
           }
         })
         .catch((error) => {
-          alert("Something went wrong " + error.message);
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong " + error.message,
+            type: "error",
+          });
         });
     }
     resetForm();
     setOperation("add");
     setRecordForEdit(null);
     setOpenPopup(false);
-    setNotify({
-      isOpen: true,
-      message: "Submitted Successfully",
-      type: "success",
-    });
   };
 
   /**
@@ -197,14 +227,31 @@ export default function PersistentDrawerLeft() {
    */
   const onDelete = (id) => {
     if (id) {
-      employeeService2.deleteEmployee(id).then((res) => {
-        if (res.data.success === true) {
-          handleList();
-          alert(res.data.message);
-        }
-      });
+      employeeService2
+        .deleteEmployee(id)
+        .then((res) => {
+          if (res.data.success === true) {
+            handleList();
+            setNotify({
+              isOpen: true,
+              message: res.data.message,
+              type: "success",
+            });
+          }
+        })
+        .catch((error) => {
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong " + error.message,
+            type: "error",
+          });
+        });
     } else {
-      alert("Something went wrong");
+      setNotify({
+        isOpen: true,
+        message: "Something went wrong",
+        type: "error",
+      });
     }
   };
 
@@ -341,6 +388,7 @@ export default function PersistentDrawerLeft() {
       >
         <EmployeeForm recordForEdit={recordForEdit} addOrEdit={addOrEdit} />
       </Popup>
+      <Notification notify={notify} setNotify={setNotify} />
     </div>
   );
 }
