@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Grid,
   Paper,
@@ -14,6 +14,7 @@ import { Link } from "react-router-dom";
 import "../scss/loginRegister.scss";
 import { useHistory } from "react-router";
 import user from "../services/user";
+import Notification from "../components/employeeForm/Notification";
 const userobject = new user();
 
 /**
@@ -24,7 +25,11 @@ const userobject = new user();
 const Signup = ({ handleChange }) => {
   const history = useHistory();
   const avatarStyle = { backgroundColor: "red" };
-
+  const [notify, setNotify] = useState({
+    isOpen: false,
+    message: "",
+    type: "",
+  });
   const initialValues = {
     firstName: "",
     lastName: "",
@@ -64,14 +69,26 @@ const Signup = ({ handleChange }) => {
         .SignUpData(userData)
         .then((res) => {
           if (res.data.success === true) {
-            alert(res.data.message);
+            setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
             history.push("/login");
           } else {
-            alert("Something went wrong");
+            setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
           }
         })
         .catch((error) => {
-          alert("Something went wrong " + error.message);
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong " + error.message,
+            type: "error",
+          });
         });
       props.resetForm();
       props.setSubmitting(false);
@@ -191,6 +208,7 @@ const Signup = ({ handleChange }) => {
           Already have an account ?<Link to="/login">Login</Link>
         </Typography>
       </Paper>
+      <Notification notify={notify} setNotify={setNotify} />
     </Grid>
   );
 };
