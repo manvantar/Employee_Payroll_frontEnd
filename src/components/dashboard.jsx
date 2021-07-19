@@ -31,6 +31,7 @@ import Card from "./card.jsx";
 import Popup from "./employeeForm/Popup";
 import employeeService2 from "../services/employee";
 import Notification from "./employeeForm/Notification";
+import auth from "../services/auth";
 
 const drawerWidth = 240;
 
@@ -83,7 +84,7 @@ export default function PersistentDrawerLeft() {
   const history = useHistory();
   const classes = useStyles();
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [employeeIdEdit, setIdForEdit] = useState(null);
   const [addoredit, setOperation] = useState("add");
@@ -114,7 +115,9 @@ export default function PersistentDrawerLeft() {
    */
   const handleLogout = () => {
     localStorage.removeItem("token");
-    history.push("/login");
+    auth.logout(() => {
+      history.push("/login");
+    });
   };
 
   /**

@@ -1,8 +1,9 @@
 import "./scss/App.scss";
 import Signup from "./pages/register";
 import Login from "./pages/login";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route} from "react-router-dom";
 import dashboard from "./components/dashboard";
+import ProtectedRoute from "./components/protectedRoute";
 
 /**
  * @description App functional component to return multiple componets on routing
@@ -12,13 +13,10 @@ const App = () => {
   return (
     <Router>
       <div className="App">
-        <Switch>
           <Route exact path="/" component={Signup} />
           <Route path="/register" component={Signup} />
           <Route path="/login" component={Login} />
-          <Route path="/dashboard" component={dashboard} />
-          <Route path="*" component={()=>{return(<h1>Error 404 page not found</h1>)}} />
-        </Switch>
+          <ProtectedRoute path="/dashboard" component={dashboard} />
       </div>
     </Router>
   );
