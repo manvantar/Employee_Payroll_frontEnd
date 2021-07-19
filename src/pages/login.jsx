@@ -57,11 +57,8 @@ const Login = ({ handleChange }) => {
         .login(credentials)
         .then((res) => {
           if (res.data.success === true) {
-            //alert(res.data.message)
             localStorage.setItem("token", res.data.token);
-            //console.log(auth.isAuthenticated);
             auth.login(() => {
-           //   console.log(auth.isAuthenticated);
               history.push("/dashboard");
             });
           } else {

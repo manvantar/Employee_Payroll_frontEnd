@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 import Controls from "../components/controls/Controls";
 import { useForm, Form } from "../components/employeeForm/useForm";
-//import employee from "../services/employee";
 
 const initialFValues = {
   firstName: "",
   lastName: "",
-  email: "",
+  emailId: "",
   mobile: "",
   city: "",
   salary: "",
@@ -32,8 +31,8 @@ export default function EmployeeForm(props) {
       temp.firstName = fieldValues.firstName ? "" : "This field is required.";
     if ("lastName" in fieldValues)
       temp.lastName = fieldValues.lastName ? "" : "This field is required.";
-    if ("email" in fieldValues)
-      temp.email = /$^|.+@.+..+/.test(fieldValues.email)
+    if ("emailId" in fieldValues)
+      temp.emailId = /$^|.+@.+..+/.test(fieldValues.emailId)
         ? ""
         : "Email is not valid.";
     if ("mobile" in fieldValues)
@@ -68,7 +67,7 @@ export default function EmployeeForm(props) {
       let employeeData = {
         firstName: values.firstName,
         lastName: values.lastName,
-        emailId: values.email,
+        emailId: values.emailId,
         company: values.company,
         mobile: values.mobile,
         designation: values.designation,
@@ -107,9 +106,9 @@ export default function EmployeeForm(props) {
           <Controls.Input
             label="Email"
             name="email"
-            value={values.email}
+            value={values.emailId}
             onChange={handleInputChange}
-            error={errors.email}
+            error={errors.emailId}
           />
           <Controls.Input
             label="Mobile"
@@ -147,7 +146,6 @@ export default function EmployeeForm(props) {
             onChange={handleInputChange}
             error={errors.designation}
           />
-
           <div>
             <Controls.Button type="submit" text="Submit" />
             <Controls.Button text="Reset" color="default" onClick={resetForm} />
