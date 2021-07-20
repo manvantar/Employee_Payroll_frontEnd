@@ -25,11 +25,10 @@ import { Grid, Badge } from "@material-ui/core";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import ChatBubbleOutlineIcon from "@material-ui/icons/ChatBubbleOutline";
 import { useHistory } from "react-router";
-import employee from "../services/employee";
 import EmployeeForm from "./EmployeeForm.jsx";
 import Card from "./card.jsx";
 import Popup from "./employeeForm/Popup";
-import employeeService2 from "../services/employee";
+import employeeService from "../services/employee";
 import Notification from "./employeeForm/Notification";
 import auth from "../services/auth";
 
@@ -124,7 +123,7 @@ export default function PersistentDrawerLeft() {
    * @description handle Lisy button, when its fetches the Employee data from Backend
    */
   const handleList = () => {
-    employee
+    employeeService
       .getAllEmployees()
       .then((res) => {
         if (res.data.success === true) {
@@ -145,7 +144,6 @@ export default function PersistentDrawerLeft() {
         });
       });
   };
-  //handleList();
 
   /**
    * @description handle addorEdit request button, when we want to add Employee data Edit
@@ -167,7 +165,7 @@ export default function PersistentDrawerLeft() {
       city: employee.city,
     };
     if (addoredit === "add") {
-      employeeService2
+      employeeService
         .insertEmployees(employeeAddData)
         .then((res) => {
           if (res.data.success === true) {
@@ -193,7 +191,7 @@ export default function PersistentDrawerLeft() {
           });
         });
     } else {
-      employeeService2
+      employeeService
         .updateEmployee(employeeAddData, employeeIdEdit)
         .then((res) => {
           if (res.data.success === true) {
@@ -230,7 +228,7 @@ export default function PersistentDrawerLeft() {
    */
   const onDelete = (id) => {
     if (id) {
-      employeeService2
+      employeeService
         .deleteEmployee(id)
         .then((res) => {
           if (res.data.success === true) {
