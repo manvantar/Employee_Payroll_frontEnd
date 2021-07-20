@@ -145,7 +145,7 @@ export default function PersistentDrawerLeft() {
         });
       });
   };
-  handleList();
+  //handleList();
 
   /**
    * @description handle addorEdit request button, when we want to add Employee data Edit
@@ -154,7 +154,7 @@ export default function PersistentDrawerLeft() {
     setNotify({
       isOpen: true,
       message: "Submitted Successfully",
-      type: "success",
+      type: "info",
     });
     const employeeAddData = {
       firstName: employee.firstName,
@@ -345,6 +345,7 @@ export default function PersistentDrawerLeft() {
               onClick={() => {
                 setOpenPopup(true);
                 setRecordForEdit(null);
+                setOperation("add");
               }}
               primary="Add"
             />

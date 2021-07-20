@@ -205,7 +205,8 @@ const Signup = ({ handleChange }) => {
         </Formik>
         <Typography align="center">
           {" "}
-          Already have an account ?<Link to="/login">Login</Link>
+          Already have an account ?
+          {/* <Link to="/login">Login</Link> */}
         </Typography>
       </Paper>
       <Notification notify={notify} setNotify={setNotify} />

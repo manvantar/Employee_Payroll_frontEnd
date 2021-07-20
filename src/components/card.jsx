@@ -29,15 +29,15 @@ const SimpleCard = (props) => {
           <Typography className="pos">
             {employee.firstName} (firstName)
           </Typography>
-          <Typography className="pos">{employee.lastName}(lastName)</Typography>
-          <Typography className="pos">{employee.emailId}(email)</Typography>
-          <Typography className="pos">{employee.mobile}(mobile)</Typography>
+          <Typography className="pos">{employee.lastName} (lastName)</Typography>
+          <Typography className="pos">{employee.emailId} (email)</Typography>
+          <Typography className="pos">{employee.mobile} (mobile)</Typography>
           <Typography className="pos">
-            {employee.designation}(jobTitle)
+            {employee.designation} (jobTitle)
           </Typography>
-          <Typography className="pos">{employee.company}(company)</Typography>
-          <Typography className="pos">{employee.city}(location)</Typography>
-          <Typography className="pos">{employee.salary}(salary)</Typography>
+          <Typography className="pos">{employee.company} (company)</Typography>
+          <Typography className="pos">{employee.city} (location)</Typography>
+          <Typography className="pos">{employee.salary} (salary)</Typography>
         </CardContent>
         <CardActions className="cardActions">
           <IconButton>

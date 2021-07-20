@@ -148,9 +148,9 @@ const Login = ({ handleChange }) => {
           <Typography align="center">
             {" "}
             Do not have an account ?
-            <Link data-testid="link" to="/register">
+            {/* <Link data-testid="link" to="/register">
               Register
-            </Link>
+            </Link> */}
           </Typography>
         </Paper>        
       </Grid>
