@@ -91,15 +91,16 @@ export default function EmployeeForm(props) {
   }, [recordForEdit]);
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form data-testid="Form" onSubmit={handleSubmit}>
       <Grid container>
         <Grid item xs={6}>
           <Controls.Input
             name="firstName"
-            label="Full Name"
+            label="First Name"
             value={values.firstName}
             onChange={handleInputChange}
             error={errors.firstName}
+            data-testid="FirstName"
           />
           <Controls.Input
             name="lastName"
@@ -107,6 +108,7 @@ export default function EmployeeForm(props) {
             value={values.lastName}
             onChange={handleInputChange}
             error={errors.lastName}
+            data-testid="LastName"
           />
           <Controls.Input
             label="Email"
@@ -114,6 +116,7 @@ export default function EmployeeForm(props) {
             value={values.emailId}
             onChange={handleInputChange}
             error={errors.emailId}
+            data-testid="EmailID"
           />
           <Controls.Input
             label="Mobile"
@@ -121,6 +124,7 @@ export default function EmployeeForm(props) {
             value={values.mobile}
             onChange={handleInputChange}
             error={errors.mobile}
+            data-testid="Mobile"
           />
         </Grid>
         <Grid item xs={6}>
@@ -130,13 +134,14 @@ export default function EmployeeForm(props) {
             value={values.city}
             onChange={handleInputChange}
             error={errors.city}
+            data-testid="City"
           />
           <Controls.Input
             label="Salary"
             name="salary"
             value={values.salary}
             onChange={handleInputChange}
-            error={errors.salary}
+            data-testid="Salary"
           />
           <Controls.Input
             name="company"
@@ -144,6 +149,7 @@ export default function EmployeeForm(props) {
             value={values.company}
             onChange={handleInputChange}
             error={errors.company}
+            data-testid="Company"
           />
           <Controls.Input
             name="designation"
@@ -151,10 +157,11 @@ export default function EmployeeForm(props) {
             value={values.designation}
             onChange={handleInputChange}
             error={errors.designation}
+            data-testid="Designation"
           />
           <div>
-            <Controls.Button type="submit" text="Submit" />
-            <Controls.Button text="Reset" color="default" onClick={resetForm} />
+            <Controls.Button data-testid="Submit" type="submit" text="Submit" />
+            <Controls.Button data-testid="Reset" text="Reset" color="default" onClick={resetForm} />
           </div>
         </Grid>
       </Grid>
