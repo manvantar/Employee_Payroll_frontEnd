@@ -30,6 +30,7 @@ class Employee {
 
   /**
    * @description integrating FrontEnd request to Backend to insert Employee Data using axious
+   * @param employee object containg new data is passed
    * @return response from the backend to Dashboard having success or failure details
    */
   insertEmployees = async (data) => {
@@ -44,6 +45,7 @@ class Employee {
 
   /**
    * @description integrating FrontEnd request to Backend to Delete Employee Data using axious
+   * @param employeeId is passed
    * @return response from the backend to Dashboard having success or failure details
    */
   deleteEmployee = async (employeeId) => {
@@ -58,12 +60,13 @@ class Employee {
 
   /**
    * @description integrating FrontEnd request to Backend to update an Employee Data using axious
+   * @param employee object containg Id with new data is passed
    * @return response from the backend to Dashboard having success or failure details for update
    */
-   updateEmployee = async (employeeData, employeeId) => {
+   updateEmployee = async (employeeData) => {
     const headers = this.getToken();
     try {
-      const res = await axios.put("/update/employee/" + employeeId, employeeData, headers);
+      const res = await axios.put("/update/employee/" + employeeData._id, employeeData, headers);
       return res;
     } catch (error) {
       return error;

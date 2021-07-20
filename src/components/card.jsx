@@ -8,13 +8,26 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import "../scss/card.scss";
 
+/**
+ * @description SimpleCard functional component to return Employee Card
+ * @param props values Containing Employee data
+ * @return Employee card component
+ */
 const SimpleCard = (props) => {
   const employee = props.employee;
 
+  /**
+   * @description handleEdit functional used to handle on click of edit button
+   * @return props containing employeeData
+   */
   const handleEdit = () => {
     props.editItem(props.employee);
   };
 
+  /**
+   * @description handleDelete functional used to handle on click of delete button
+   * @return props containing employeeID
+   */
   const handleDelete = () => {
     props.deleteItem(props.id);
   };
@@ -29,7 +42,9 @@ const SimpleCard = (props) => {
           <Typography className="pos">
             {employee.firstName} (firstName)
           </Typography>
-          <Typography className="pos">{employee.lastName} (lastName)</Typography>
+          <Typography className="pos">
+            {employee.lastName} (lastName)
+          </Typography>
           <Typography className="pos">{employee.emailId} (email)</Typography>
           <Typography className="pos">{employee.mobile} (mobile)</Typography>
           <Typography className="pos">

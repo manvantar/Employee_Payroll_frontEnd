@@ -22,9 +22,9 @@ export default function EmployeeForm(props) {
   const { addOrEdit, recordForEdit } = props;
 
   /**
-  * @description Validates the form
-  * @return Error if values have any error
-  */
+   * @description Validates the form
+   * @return Error if values have any error
+   */
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("firstName" in fieldValues)
@@ -37,7 +37,7 @@ export default function EmployeeForm(props) {
         : "Email is not valid.";
     if ("mobile" in fieldValues)
       temp.mobile =
-        fieldValues.mobile.length >=9 ? "" : "Minimum 10 numbers required.";
+        fieldValues.mobile.length >= 9 ? "" : "Minimum 10 numbers required.";
     if ("salary" in fieldValues)
       temp.salary =
         fieldValues.salary.length > 3 ? "" : "Minimum 3 numbers required.";
@@ -61,6 +61,11 @@ export default function EmployeeForm(props) {
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
     useForm(initialFValues, true, validate);
 
+  /**
+   * @description hadling on successful submit Employee form
+   * @param e event
+   * @return Employee data to Dashboard
+   */
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
@@ -78,12 +83,15 @@ export default function EmployeeForm(props) {
     }
   };
 
+  /**
+   * @description useEffect function used set values of employee
+   */
   useEffect(() => {
     if (recordForEdit !== null)
       setValues({
         ...recordForEdit,
-      });// eslint-disable-next-line 
-  },[ recordForEdit ] ); 
+      }); // eslint-disable-next-line
+  }, [recordForEdit]);
 
   return (
     <Form onSubmit={handleSubmit}>

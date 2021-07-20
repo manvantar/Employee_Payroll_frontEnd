@@ -8,6 +8,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * @description functional component to return SnackBar
+ * @param props having message and type and boolean value
+ * @return Snackbar with message
+*/
 export default function Notification(props) {
   const { notify, setNotify } = props;
   const classes = useStyles();

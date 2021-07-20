@@ -121,6 +121,7 @@ export default function PersistentDrawerLeft() {
 
   /**
    * @description handle Lisy button, when its fetches the Employee data from Backend
+   * @returns SnakBar with success or failure message
    */
   const handleList = () => {
     employeeService
@@ -128,6 +129,11 @@ export default function PersistentDrawerLeft() {
       .then((res) => {
         if (res.data.success === true) {
           setEmployeeRecords((employeeRecords = res.data.EmployeeData));
+          setNotify({
+            isOpen: true,
+            message: res.data.message,
+            type: "success",
+          });
         } else {
           setNotify({
             isOpen: true,
@@ -147,6 +153,8 @@ export default function PersistentDrawerLeft() {
 
   /**
    * @description handle addorEdit request button, when we want to add Employee data Edit
+   * @param employeedata and resetForm are Passed
+   * @returns SnakBar with success or failure message
    */
   const addOrEdit = (employee, resetForm) => {
     setNotify({
@@ -154,19 +162,9 @@ export default function PersistentDrawerLeft() {
       message: "Submitted Successfully",
       type: "info",
     });
-    const employeeAddData = {
-      firstName: employee.firstName,
-      lastName: employee.lastName,
-      emailId: employee.emailId,
-      company: employee.company,
-      mobile: employee.mobile,
-      designation: employee.designation,
-      salary: employee.salary,
-      city: employee.city,
-    };
     if (addoredit === "add") {
       employeeService
-        .insertEmployees(employeeAddData)
+        .insertEmployees(employee)
         .then((res) => {
           if (res.data.success === true) {
             setNotify({
@@ -191,8 +189,20 @@ export default function PersistentDrawerLeft() {
           });
         });
     } else {
+      const employeeUpdateData = {
+        _id: employeeIdEdit,
+        firstName: employee.firstName,
+        lastName: employee.lastName,
+        emailId: employee.emailId,
+        company: employee.company,
+        mobile: employee.mobile,
+        designation: employee.designation,
+        salary: employee.salary,
+        city: employee.city,
+      };
+  
       employeeService
-        .updateEmployee(employeeAddData, employeeIdEdit)
+        .updateEmployee(employeeUpdateData)
         .then((res) => {
           if (res.data.success === true) {
             handleList();
@@ -225,6 +235,8 @@ export default function PersistentDrawerLeft() {
 
   /**
    * @description handle Ondelete request button, when we want to Delete and Employee data
+   * @param employeeId is passed to delete the Item
+   * @returns SnakBar with success or failure message
    */
   const onDelete = (id) => {
     if (id) {
@@ -256,10 +268,10 @@ export default function PersistentDrawerLeft() {
     }
   };
 
-  const onEdit = (employee) => {
-    openInPopup(employee);
-  };
-
+  /**
+   * @description handle OnEdit request from card
+   * @param employee data to Edit is Passed
+   */
   const openInPopup = (item) => {
     setRecordForEdit(item);
     setIdForEdit(item._id);
@@ -376,7 +388,7 @@ export default function PersistentDrawerLeft() {
                     id={employee._id}
                     employee={employee}
                     deleteItem={onDelete}
-                    editItem={onEdit}
+                    editItem={openInPopup}
                   />
                 );
               })

@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * @description functional component to return PopUp
+ * @param props having title, children element
+ * @return children element on Parent when its called
+ */
 export default function Popup(props) {
   const { title, children, openPopup, setOpenPopup } = props;
   const classes = useStyles();

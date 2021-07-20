@@ -38,6 +38,12 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * @description functional component to return Form
+ * @param props having children element
+ * @return form
+ */
+
 export function Form(props) {
   const classes = useStyles();
   const { children, ...other } = props;

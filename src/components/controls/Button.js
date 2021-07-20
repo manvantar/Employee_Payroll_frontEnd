@@ -10,6 +10,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * @description unctional component to return Button
+ * @param props with color, children and onclick
+ * @return material Ui button
+ */
 export default function Button(props) {
   const { text, size, color, variant, onClick, ...other } = props;
   const classes = useStyles();

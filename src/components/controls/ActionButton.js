@@ -20,6 +20,11 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+/**
+ * @description Action functional component to return Button
+ * @param props with color, children and onclick
+ * @return material Ui button
+ */
 export default function ActionButton(props) {
   const { color, children, onClick } = props;
   const classes = useStyles();
