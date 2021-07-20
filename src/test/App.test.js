@@ -4,6 +4,8 @@ import React from "react";
 import { Route } from "react-router";
 import Signup from "../pages/register";
 import Login from "../pages/login";
+import ProtectedRoute from "../components/protectedRoute";
+import dashboard from "../components/dashboard";
 
 describe("App test", () => {
   let wrapper;
@@ -11,7 +13,7 @@ describe("App test", () => {
     wrapper = shallow(<App />);
   });
 
-  it("routing to login page", () => {
+  it("given_/login_path_WhentestedforRoutingElement_ShouldRenderLoginPage", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;
@@ -20,7 +22,7 @@ describe("App test", () => {
     expect(pathMap["/login"]).toBe(Login);
   });
 
-  it("routing to registration page", () => {
+  it("given_/_path_WhentestedforRoutingElement_ShouldRenderRegistrationPage", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;
@@ -29,12 +31,21 @@ describe("App test", () => {
     expect(pathMap["/"]).toBe(Signup);
   });
 
-  it("routing to registration page", () => {
+  it("given_/register_path_WhentestedforRoutingElement_ShouldRenderRegistrationPage", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;
       return pathMapp;
     }, {});
     expect(pathMap["/register"]).toBe(Signup);
+  });
+
+  it("given_/dashboard_path_WhentestedforRoutingElement_ShouldRenderDashboardComponent", () => {
+    const pathMap = wrapper.find(ProtectedRoute).reduce((pathMapp, route) => {
+      const routeProps = route.props();
+      pathMapp[routeProps.path] = routeProps.component;
+      return pathMapp;
+    }, {});
+    expect(pathMap["/dashboard"]).toBe(dashboard);
   });
 });
