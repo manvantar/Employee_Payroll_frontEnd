@@ -36,41 +36,41 @@ const SimpleCard = (props) => {
     <div className="root">
       <Card data-testid="Card">
         <CardContent data-testid="CardContent">
-          <Typography className="item">
+          <Typography data-testid="FirstName" className="item">
             {employee.firstName}{" "}
             <Typography className="name">(firstName)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography  data-testid="LastName" className="item">
             {employee.lastName}{" "}
             <Typography className="name">(lastName)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography data-testid="email" className="item">
             {employee.emailId} <Typography className="name">(email)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography data-testid="mobile" className="item">
             {employee.mobile} <Typography className="name">(mobile)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography data-testid="jobTitle" className="item">
             {employee.designation}{" "}
             <Typography className="name"> (jobTitle)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography  data-testid="company" className="item">
             {employee.company}{" "}
             <Typography className="name"> (company)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography data-testid="location" className="item">
             {employee.city} <Typography className="name">(location)</Typography>
           </Typography>
-          <Typography className="item">
+          <Typography data-testid="salary" className="item">
             {employee.salary} <Typography className="name">(salary)</Typography>
           </Typography>
         </CardContent>
         <CardActions className="cardActions">
           <IconButton>
-            <EditIcon color="primary" onClick={handleEdit}></EditIcon>
+            <EditIcon data-testid="editIcon" color="primary" onClick={handleEdit}></EditIcon>
           </IconButton>
           <IconButton>
-            <DeleteIcon color="secondary"
+            <DeleteIcon data-testid="deleteIcon" color="secondary"
               onClick={handleDelete}
             ></DeleteIcon>
           </IconButton>
