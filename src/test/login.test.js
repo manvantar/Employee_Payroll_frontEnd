@@ -10,17 +10,17 @@ describe("Login Headers Tag test", () => {
     wrapper = shallow(<Login />);
   });
 
-  it("render h1 tag text", () => {
+  it("given(h1)Element_WhenLoginShallowed_ShouldContainExpectedValuesInLoginPage", () => {
     expect(wrapper.find("h1").text()).toContain("EMPLOYEE PAYROLL");
   });
 
-  it("render h2 tag text", () => {
+  it("given(h2)Element_WhenLoginShallowed_ShouldContainExpectedValuesInLoginPage", () => {
     expect(wrapper.find("h2").text()).toContain("LOGIN");
   });
 });
 
 describe("Login Elements availabity test", () => {
-  it("check elements available", () => {
+  it("givenTestIdElement_WhenLoginPageRendered_ShouldContainThoseElementInLoginPages", () => {
     const { getByTestId } = render(<Login />);
     const logo = getByTestId("avatar");
     const form = getByTestId("form");
@@ -35,7 +35,7 @@ describe("Login Elements availabity test", () => {
     expect(password).toBeInTheDocument();
   });
 
-  it("check elements value", () => {
+  it("givenTestIdElement_WhenLoginPageRendered_ShouldContainExpectedValuesInLoginPage", () => {
     const { getByTestId } = render(<Login />);
     const email = getByTestId("email");
     const password = getByTestId("password");

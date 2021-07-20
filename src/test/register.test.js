@@ -9,17 +9,17 @@ describe("Login test", () => {
     wrapper = shallow(<Register />);
   });
 
-  it("render h1 tag text", () => {
+  it("given(h1)Element_WhenRegisterPageShallowed_ShouldContainExpectedValues", () => {
     expect(wrapper.find("h1").text()).toContain("EMPLOYEE PAYROLL");
   });
 
-  it("render h2 tag text", () => {
+  it("given(h2)Element_WhenRegisterPageShallowed_ShouldContainExpectedValues", () => {
     expect(wrapper.find("h2").text()).toContain("REGISTRATION");
   });
 });
 
 describe("Register Page Elements availabity test", () => {
-  it("check elements available", () => {
+  it("givenTestIdElement_WhenRegisterPageRendered_ShouldContainThoseElements", () => {
     const { getByTestId } = render(<Register />);
     const logo = getByTestId("avatar");
     const form = getByTestId("form");
@@ -40,7 +40,7 @@ describe("Register Page Elements availabity test", () => {
     expect(confirmPassword).toBeInTheDocument();
   });
 
-  it("check Register page elements value", () => {
+  it("givenTestIdElement_WhenLoginPageRendered_ShouldContainExpectedElementValue", () => {
     const { getByTestId } = render(<Register />);
     const email = getByTestId("email");
     const password = getByTestId("password");
