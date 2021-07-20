@@ -11,7 +11,7 @@ describe("App test", () => {
     wrapper = shallow(<App />);
   });
 
-  test("routing to login page", () => {
+  it("routing to login page", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;
@@ -20,7 +20,7 @@ describe("App test", () => {
     expect(pathMap["/login"]).toBe(Login);
   });
 
-  test("routing to registration page", () => {
+  it("routing to registration page", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;
@@ -29,7 +29,7 @@ describe("App test", () => {
     expect(pathMap["/"]).toBe(Signup);
   });
 
-  test("routing to registration page", () => {
+  it("routing to registration page", () => {
     const pathMap = wrapper.find(Route).reduce((pathMapp, route) => {
       const routeProps = route.props();
       pathMapp[routeProps.path] = routeProps.component;

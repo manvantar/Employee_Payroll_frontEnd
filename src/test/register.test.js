@@ -1,6 +1,6 @@
-import { shallow, mount } from "enzyme";
+import { shallow } from "enzyme";
 import Register from "../pages/register";
-import { render, fireEvent } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 describe("Login test", () => {
@@ -9,17 +9,17 @@ describe("Login test", () => {
     wrapper = shallow(<Register />);
   });
 
-  test("render h1 tag text", () => {
+  it("render h1 tag text", () => {
     expect(wrapper.find("h1").text()).toContain("EMPLOYEE PAYROLL");
   });
 
-  test("render h2 tag text", () => {
+  it("render h2 tag text", () => {
     expect(wrapper.find("h2").text()).toContain("REGISTRATION");
   });
 });
 
 describe("Register Page Elements availabity test", () => {
-  test("check elements available", () => {
+  it("check elements available", () => {
     const { getByTestId } = render(<Register />);
     const logo = getByTestId("avatar");
     const form = getByTestId("form");
@@ -40,7 +40,7 @@ describe("Register Page Elements availabity test", () => {
     expect(confirmPassword).toBeInTheDocument();
   });
 
-  test("check Register page elements value", () => {
+  it("check Register page elements value", () => {
     const { getByTestId } = render(<Register />);
     const email = getByTestId("email");
     const password = getByTestId("password");

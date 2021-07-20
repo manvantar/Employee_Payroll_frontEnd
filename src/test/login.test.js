@@ -10,17 +10,17 @@ describe("Login Headers Tag test", () => {
     wrapper = shallow(<Login />);
   });
 
-  test("render h1 tag text", () => {
+  it("render h1 tag text", () => {
     expect(wrapper.find("h1").text()).toContain("EMPLOYEE PAYROLL");
   });
 
-  test("render h2 tag text", () => {
+  it("render h2 tag text", () => {
     expect(wrapper.find("h2").text()).toContain("LOGIN");
   });
 });
 
 describe("Login Elements availabity test", () => {
-  test("check elements available", () => {
+  it("check elements available", () => {
     const { getByTestId } = render(<Login />);
     const logo = getByTestId("avatar");
     const form = getByTestId("form");
@@ -35,7 +35,7 @@ describe("Login Elements availabity test", () => {
     expect(password).toBeInTheDocument();
   });
 
-  test("check elements value", () => {
+  it("check elements value", () => {
     const { getByTestId } = render(<Login />);
     const email = getByTestId("email");
     const password = getByTestId("password");
