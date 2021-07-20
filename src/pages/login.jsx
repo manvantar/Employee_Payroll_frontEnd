@@ -72,9 +72,19 @@ const Login = ({ handleChange }) => {
           }
         })
         .catch((error) => {
+          let message;
+          if(error.message.includes("404")){
+            message = "invalid emaiId or password";
+          }
+          else if ((error.message.includes("400"))) {
+            message = "invalid input";
+          }
+          else {
+            message = "something went wrong";
+          }
           setNotify({
             isOpen: true,
-            message: "Something went wrong "+error.message,
+            message: message,
             type: "error",
           });
         });

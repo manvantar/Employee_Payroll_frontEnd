@@ -84,9 +84,19 @@ const Signup = ({ handleChange }) => {
           }
         })
         .catch((error) => {
+          let message;
+          if(error.message.includes("500")){
+            message = "User Account already Exists try login";
+          }
+          else if ((error.message.includes("400"))) {
+            message = "invalid input";
+          }
+          else {
+            message = "something went wrong";
+          }
           setNotify({
             isOpen: true,
-            message: "Something went wrong " + error.message,
+            message: message,
             type: "error",
           });
         });

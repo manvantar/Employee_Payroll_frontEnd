@@ -86,13 +86,13 @@ export default function PersistentDrawerLeft() {
   const [open, setOpen] = useState(false);
   const [recordForEdit, setRecordForEdit] = useState(null);
   const [employeeIdEdit, setIdForEdit] = useState(null);
-  const [addoredit, setOperation] = useState("add");
+  const [addoredit, setOperation] = useState(null);
   var [employeeRecords, setEmployeeRecords] = useState();
   const [openPopup, setOpenPopup] = useState(false);
   const [notify, setNotify] = useState({
-    isOpen: false,
-    message: "",
-    type: "",
+    isOpen: true,
+    message: "login successful",
+    type: "success",
   });
 
   /**
@@ -129,26 +129,22 @@ export default function PersistentDrawerLeft() {
       .then((res) => {
         if (res.data.success === true) {
           setEmployeeRecords((employeeRecords = res.data.EmployeeData));
-          setNotify({
-            isOpen: true,
-            message: res.data.message,
-            type: "success",
-          });
         } else {
-          setNotify({
-            isOpen: true,
-            message: "Something went wrong",
-            type: "error",
-          });
+              setNotify({
+              isOpen: true,
+              message: "Something went wrong",
+              type: "error",
+            });
         }
       })
       .catch((error) => {
-        setNotify({
-          isOpen: true,
-          message: "Something went wrong " + error.message,
-          type: "error",
-        });
-      });
+          setNotify({
+            isOpen: true,
+            message: "Something went wrong " + error.message,
+            type: "error",
+          });
+        }
+      );
   };
 
   /**
@@ -200,7 +196,7 @@ export default function PersistentDrawerLeft() {
         salary: employee.salary,
         city: employee.city,
       };
-  
+
       employeeService
         .updateEmployee(employeeUpdateData)
         .then((res) => {
@@ -244,7 +240,6 @@ export default function PersistentDrawerLeft() {
         .deleteEmployee(id)
         .then((res) => {
           if (res.data.success === true) {
-            handleList();
             setNotify({
               isOpen: true,
               message: res.data.message,
@@ -266,6 +261,7 @@ export default function PersistentDrawerLeft() {
         type: "error",
       });
     }
+    handleList();
   };
 
   /**
