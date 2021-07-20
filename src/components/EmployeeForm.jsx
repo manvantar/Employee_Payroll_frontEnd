@@ -36,19 +36,16 @@ export default function EmployeeForm(props) {
         ? ""
         : "Email is not valid.";
     if ("mobile" in fieldValues)
-      temp.mobile =
-        fieldValues.mobile.length >= 9 ? "" : "Minimum 10 numbers required.";
+      temp.mobile = /^[0-9]{10}$/.test(fieldValues.mobile) ? "" : "Exactly 10 numbers required.";
     if ("salary" in fieldValues)
       temp.salary =
-        fieldValues.salary.length > 3 ? "" : "Minimum 3 numbers required.";
+      /^[0-9]{4,}$/.test(fieldValues.salary) ? "" : "Minimum Salary should be 1000.";
     if ("company" in fieldValues)
       temp.company = fieldValues.company ? "" : "This field is required.";
     if ("city" in fieldValues)
       temp.city = fieldValues.city ? "" : "This field is required.";
     if ("designation" in fieldValues)
-      temp.designation = fieldValues.designation
-        ? ""
-        : "This field is required.";
+      temp.designation = fieldValues.designation ? "" : "This field is required.";
 
     setErrors({
       ...temp,
@@ -132,6 +129,7 @@ export default function EmployeeForm(props) {
             name="city"
             value={values.city}
             onChange={handleInputChange}
+            error={errors.city}
           />
           <Controls.Input
             label="Salary"
