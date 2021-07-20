@@ -35,28 +35,44 @@ const SimpleCard = (props) => {
   return (
     <div className="root">
       <Card data-testid="Card">
-        <CardContent data-testid="CardContent" >
-          <Typography className="pos">
-            {employee.firstName} <Typography className="name">(firstName)</Typography>
+        <CardContent data-testid="CardContent">
+          <Typography className="item">
+            {employee.firstName}{" "}
+            <Typography className="name">(firstName)</Typography>
           </Typography>
-          <Typography className="pos">
-            {employee.lastName} <Typography className="name">(lastName)</Typography>
+          <Typography className="item">
+            {employee.lastName}{" "}
+            <Typography className="name">(lastName)</Typography>
           </Typography>
-          <Typography className="pos">{employee.emailId} <Typography className="name">(email)</Typography></Typography>
-          <Typography className="pos">{employee.mobile} <Typography className="name">(mobile)</Typography></Typography>
-          <Typography className="pos">
-            {employee.designation} <Typography className="name"> (jobTitle)</Typography>
+          <Typography className="item">
+            {employee.emailId} <Typography className="name">(email)</Typography>
           </Typography>
-          <Typography className="pos">{employee.company} <Typography className="name"> (company)</Typography></Typography>
-          <Typography className="pos">{employee.city} <Typography className="name">(location)</Typography></Typography>
-          <Typography className="pos">{employee.salary} <Typography className="name">(salary)</Typography></Typography>
+          <Typography className="item">
+            {employee.mobile} <Typography className="name">(mobile)</Typography>
+          </Typography>
+          <Typography className="item">
+            {employee.designation}{" "}
+            <Typography className="name"> (jobTitle)</Typography>
+          </Typography>
+          <Typography className="item">
+            {employee.company}{" "}
+            <Typography className="name"> (company)</Typography>
+          </Typography>
+          <Typography className="item">
+            {employee.city} <Typography className="name">(location)</Typography>
+          </Typography>
+          <Typography className="item">
+            {employee.salary} <Typography className="name">(salary)</Typography>
+          </Typography>
         </CardContent>
         <CardActions className="cardActions">
           <IconButton>
-            <EditIcon onClick={handleEdit}></EditIcon>
+            <EditIcon color="primary" onClick={handleEdit}></EditIcon>
           </IconButton>
           <IconButton>
-            <DeleteIcon onClick={handleDelete}></DeleteIcon>
+            <DeleteIcon color="secondary"
+              onClick={handleDelete}
+            ></DeleteIcon>
           </IconButton>
         </CardActions>
       </Card>
