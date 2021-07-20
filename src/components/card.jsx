@@ -34,34 +34,29 @@ const SimpleCard = (props) => {
 
   return (
     <div className="root">
-      <Card>
-        <CardContent>
-          {/* <Typography className="title" gutterBottom>
-            objectId:{Employee.ObjectId} */}
-          {/* </Typography> */}
+      <Card data-testid="Card">
+        <CardContent data-testid="CardContent" >
           <Typography className="pos">
-            {employee.firstName} (firstName)
+            {employee.firstName} <Typography className="name">(firstName)</Typography>
           </Typography>
           <Typography className="pos">
-            {employee.lastName} (lastName)
+            {employee.lastName} <Typography className="name">(lastName)</Typography>
           </Typography>
-          <Typography className="pos">{employee.emailId} (email)</Typography>
-          <Typography className="pos">{employee.mobile} (mobile)</Typography>
+          <Typography className="pos">{employee.emailId} <Typography className="name">(email)</Typography></Typography>
+          <Typography className="pos">{employee.mobile} <Typography className="name">(mobile)</Typography></Typography>
           <Typography className="pos">
-            {employee.designation} (jobTitle)
+            {employee.designation} <Typography className="name"> (jobTitle)</Typography>
           </Typography>
-          <Typography className="pos">{employee.company} (company)</Typography>
-          <Typography className="pos">{employee.city} (location)</Typography>
-          <Typography className="pos">{employee.salary} (salary)</Typography>
+          <Typography className="pos">{employee.company} <Typography className="name"> (company)</Typography></Typography>
+          <Typography className="pos">{employee.city} <Typography className="name">(location)</Typography></Typography>
+          <Typography className="pos">{employee.salary} <Typography className="name">(salary)</Typography></Typography>
         </CardContent>
         <CardActions className="cardActions">
           <IconButton>
             <EditIcon onClick={handleEdit}></EditIcon>
-            {/* <ListItemText primary='Edit' /> */}
           </IconButton>
           <IconButton>
             <DeleteIcon onClick={handleDelete}></DeleteIcon>
-            {/* <ListItemText primary='Delete' /> */}
           </IconButton>
         </CardActions>
       </Card>

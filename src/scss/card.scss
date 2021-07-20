@@ -1,21 +1,22 @@
 .root {
+  all: unset;
   max-width: 350px;
   margin-bottom: 30px;
   margin-top: 30px;
   margin-right: 30px;
   margin-left: 30px;
-  background-color: #ee9b9b;
-  color: #ee9b9b;
+  background-color: #6b6b6b;
+  color: #000000;
 }
-.title {
-  font-size: 20;
-  color: "Blue";
+
+.pos{
+  all: unset;
+  display: flex;
   font-weight: bold;
-}
-.pos {
-  margin-bottom: 5;
-  font-size: 16;
-  font-weight: bold;
+  .name{
+    font-weight: normal;
+    color: #707070;
+  }
 }
 
 .cardActions {
