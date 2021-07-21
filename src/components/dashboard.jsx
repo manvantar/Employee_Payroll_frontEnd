@@ -36,7 +36,6 @@ const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
-    backgroundColor: "#c0c0c0",
     display: "flex",
     alignItems: "left",
     justifyContent: "flex-end",
@@ -54,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
     width: drawerWidth,
   },
   content: {
+    backgroundColor: "#f8f7f7",
     display: "flex",
     marginTop: 60,
     alignItems: "center",
@@ -71,6 +71,7 @@ const useStyles = makeStyles((theme) => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
     marginLeft: 240,
+    
   },
 }));
 
@@ -283,30 +284,32 @@ export default function PersistentDrawerLeft() {
         className={clsx("Header", classes.appBar, {
           [classes.appBarShift]: open,
         })}
+        data-testid="AppBar"
       >
-        <Toolbar>
+        <Toolbar data-testid="Toolbar">
           <IconButton
             aria-label="open drawer"
             onClick={handleDrawerOpen}
             edge="start"
             className={clsx(classes.menuButton, open && classes.hide)}
+            data-testid="IconButton"
           >
-            <MenuIcon />
+            <MenuIcon data-testid="MenuIcon"/>
           </IconButton>
-          <Typography variant="h8" className="heading">
+          <Typography variant="h6" className="heading" data-testid="Header">
             EMPLOYEE PAYROLL
           </Typography>
           <Grid container alignItems="center">
             <Grid item sm></Grid>
             <Grid item>
-              <IconButton>
-                <Badge badgeContent={1} variant="sharp" color="secondary">
-                  <NotificationsNoneIcon fontSize="small" />
+              <IconButton >
+                <Badge badgeContent={1} color="secondary">
+                  <NotificationsNoneIcon fontSize="small" data-testid="NotificationIcon" />
                 </Badge>
               </IconButton>
               <IconButton>
-                <Badge badgeContent={1} variant="sharp" color="primary">
-                  <ChatBubbleOutlineIcon fontSize="small" />
+                <Badge badgeContent={1} color="primary">
+                  <ChatBubbleOutlineIcon fontSize="small" data-testid="ChatBubbleOutlineIcon"/>
                 </Badge>
               </IconButton>
               <Button
@@ -314,6 +317,7 @@ export default function PersistentDrawerLeft() {
                 type="submit"
                 onClick={handleLogout}
                 color="primary"
+                data-testid="logout"
               >
                 logout
               </Button>

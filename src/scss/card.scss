@@ -10,10 +10,11 @@
 .item{
   all: unset;
   display: flex;
+  font-size: medium;
   font-weight: bold;
   .name{
     font-weight: normal;
-    color: #707070;
+    color: #6d6868;
   }
 }
 
