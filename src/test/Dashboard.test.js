@@ -39,4 +39,13 @@ describe("DashBoard component test", () => {
         expect(EditElement).toBeInTheDocument();
     })
 
+    it("givenTestIdElement_WhenRenderedDashBoard_ShouldContainHeaderWithExpectedInputElements", () => {
+        const { getByTestId }  = render(<Dashboard />);
+        const EmployeeForm = getByTestId("EmployeeForm");
+        const SnackBar = getByTestId("SnackBar");
+
+        expect(EmployeeForm).toBeInTheDocument();
+        expect(SnackBar).toBeInTheDocument();
+
+    });
 })
