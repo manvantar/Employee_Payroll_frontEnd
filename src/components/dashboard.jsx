@@ -333,9 +333,10 @@ export default function PersistentDrawerLeft() {
         classes={{
           paper: classes.drawerPaper,
         }}
+        data-testid="Drawer"
       >
         <div className="drawerHeader">
-          <IconButton onClick={handleDrawerClose}>
+          <IconButton onClick={handleDrawerClose} data-testid="DrawerCloser">
             {theme.direction === "ltr" ? (
               <ChevronLeftIcon />
             ) : (
@@ -343,14 +344,14 @@ export default function PersistentDrawerLeft() {
             )}
           </IconButton>
         </div>
-        <Divider />
+        <Divider data-testid="Divider"/>
         <List>
-          <ListItem button key="List">
-            <ListItemIcon>{<ListIcon />}</ListItemIcon>
+          <ListItem button key="List" >
+            <ListItemIcon>{<ListIcon data-testid="ListElement"/>}</ListItemIcon>
             <ListItemText type="submit" onClick={handleList} primary="List" />
           </ListItem>
           <ListItem button key="Add">
-            <ListItemIcon>{<AddIcon />}</ListItemIcon>
+            <ListItemIcon>{<AddIcon data-testid="AddElement"/>}</ListItemIcon>
             <ListItemText
               onClick={() => {
                 setOpenPopup(true);
@@ -361,11 +362,11 @@ export default function PersistentDrawerLeft() {
             />
           </ListItem>
           <ListItem button key="Edit">
-            <ListItemIcon>{<EditIcon />}</ListItemIcon>
+            <ListItemIcon>{<EditIcon data-testid="EditElement" />}</ListItemIcon>
             <ListItemText primary="Edit" />
           </ListItem>
           <ListItem button key="Delete">
-            <ListItemIcon>{<DeleteIcon />}</ListItemIcon>
+            <ListItemIcon>{<DeleteIcon data-testid="DeleteElement" />}</ListItemIcon>
             <ListItemText primary="Delete" />
           </ListItem>
         </List>
@@ -400,9 +401,9 @@ export default function PersistentDrawerLeft() {
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <EmployeeForm recordForEdit={recordForEdit} addOrEdit={addOrEdit} />
+        <EmployeeForm data-testid="EmployeeForm" recordForEdit={recordForEdit} addOrEdit={addOrEdit} />
       </Popup>
-      <Notification notify={notify} setNotify={setNotify} />
+      <Notification data-testid="SnackBar" notify={notify} setNotify={setNotify} />
     </div>
   );
 }

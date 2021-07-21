@@ -37,7 +37,7 @@ const SimpleCard = (props) => {
       <Card data-testid="Card" className="Card">
         <CardContent className="CardContent" data-testid="CardContent">
           <Typography data-testid="FirstName" variant="h7" className="item">
-            {employee.firstName}{" "}<br/>
+            {employee.firstName}{" "}
             <Typography className="name">(firstName)</Typography>
           </Typography>
           <Typography  data-testid="LastName" variant="h7" className="item">

@@ -5,7 +5,7 @@ import "@testing-library/jest-dom/extend-expect";
 
 describe("Employee form test", () => {
   
-    it("givenTestIdElement_WhenRenderedEmployeeForm_ShouldContainExpectedInputElements", () => {
+    it("givenTestIdElement_WhenRenderedDashBoard_ShouldContainHeaderWithExpectedInputElements", () => {
         const { getByTestId }  = render(<Dashboard />);
         const AppBar = getByTestId("AppBar");
         const Icon = getByTestId("IconButton");
@@ -20,6 +20,23 @@ describe("Employee form test", () => {
         expect(MenuIcon).toBeInTheDocument();
         expect(NotificationIcon).toBeInTheDocument();
         expect(logout).toBeInTheDocument();
+    })
+
+    it("givenTestIdElement_WhenRenderedDashBoard_ShouldContainNavigationBarWithExpectedInputElements", () => {
+        const { getByTestId }  = render(<Dashboard />);
+        const Drawer = getByTestId("Drawer");
+        const DrawerCloser = getByTestId("DrawerCloser");
+        const Divider = getByTestId("Divider");
+        const ListElement = getByTestId("ListElement");
+        const AddElement = getByTestId("AddElement");
+        const EditElement = getByTestId("EditElement");
+        
+        expect(Drawer).toBeInTheDocument();
+        expect(DrawerCloser).toBeInTheDocument();
+        expect(Divider).toBeInTheDocument();
+        expect(ListElement).toBeInTheDocument();
+        expect(AddElement).toBeInTheDocument();
+        expect(EditElement).toBeInTheDocument();
     })
 
 })
