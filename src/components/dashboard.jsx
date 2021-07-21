@@ -397,11 +397,12 @@ export default function PersistentDrawerLeft() {
         </Grid>
       </main>
       <Popup
+        data-testid="EmployeeForm"
         title="Employee Form"
         openPopup={openPopup}
         setOpenPopup={setOpenPopup}
       >
-        <EmployeeForm data-testid="EmployeeForm" recordForEdit={recordForEdit} addOrEdit={addOrEdit} />
+        <EmployeeForm  recordForEdit={recordForEdit} addOrEdit={addOrEdit} />
       </Popup>
       <Notification data-testid="SnackBar" notify={notify} setNotify={setNotify} />
     </div>
