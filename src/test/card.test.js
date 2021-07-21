@@ -3,7 +3,7 @@ import SimpleCard from "../components/card";
 import { render } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
-describe("Employee form test", () => {
+describe("Card Component test", () => {
   let employee = {
     firstName: "Kumar",
     lastName: "Vicks2",
