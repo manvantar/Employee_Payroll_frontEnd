@@ -32,7 +32,7 @@ import employeeService from "../services/employee";
 import Notification from "./employeeForm/Notification";
 import auth from "../services/auth";
 
-const drawerWidth = 240;
+const drawerWidth = 140;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -70,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-    marginLeft: 240,
+    marginLeft: 140,
     
   },
 }));

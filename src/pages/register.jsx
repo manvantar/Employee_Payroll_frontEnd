@@ -216,7 +216,7 @@ const Signup = ({ handleChange }) => {
         <Typography align="center">
           {" "}
           Already have an account ?
-          {/* <Link to="/login">Login</Link> */}
+          <Link to="/login">Login</Link>
         </Typography>
       </Paper>
       <Notification notify={notify} setNotify={setNotify} />
