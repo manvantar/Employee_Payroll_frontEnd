@@ -246,6 +246,7 @@ export default function PersistentDrawerLeft() {
               message: res.data.message,
               type: "success",
             });
+            handleList();
           }
         })
         .catch((error) => {
@@ -262,7 +263,6 @@ export default function PersistentDrawerLeft() {
         type: "error",
       });
     }
-    handleList();
   };
 
   /**
@@ -379,7 +379,7 @@ export default function PersistentDrawerLeft() {
         <Grid
           container
           direction="row"
-          justifyContent="left"
+          justifyContent="center"
           alignItems="center"
         >
           {employeeRecords
