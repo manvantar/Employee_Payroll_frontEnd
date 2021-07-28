@@ -19,7 +19,6 @@
     "formik": "^2.2.9",
     "js-cookie": "^2.2.1",
     "react": "^16.8.0",
-    "react-bootstrap": "^1.6.1",
     "react-dom": "^16.8.0",
     "react-icons": "^4.2.0",
     "react-redux": "^7.2.4",
