@@ -32,7 +32,7 @@ import employeeService from "../services/employee";
 import Notification from "./employeeForm/Notification";
 import auth from "../services/auth";
 
-const drawerWidth = 140;
+const drawerWidth = 200;
 
 const useStyles = makeStyles((theme) => ({
   appBar: {

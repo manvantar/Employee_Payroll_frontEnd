@@ -7,7 +7,8 @@
   background-color: #949090;
   .paperStyle {
     height: auto;
-    width: 300px;
+    max-width: 350px;
+    width: auto;
     display: flex;
     justify-content: center;
     align-items: center;
