@@ -296,7 +296,7 @@ export default function PersistentDrawerLeft() {
           >
             <MenuIcon data-testid="MenuIcon"/>
           </IconButton>
-          <Typography variant="h6" className="heading" data-testid="Header">
+          <Typography variant="h7" className="heading" data-testid="Header">
             EMPLOYEE PAYROLL
           </Typography>
           <Grid container alignItems="center">
