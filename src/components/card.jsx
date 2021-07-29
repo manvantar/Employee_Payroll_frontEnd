@@ -6,6 +6,7 @@ import Typography from "@material-ui/core/Typography";
 import IconButton from "@material-ui/core/IconButton";
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
+import Fab from "@material-ui/core/Fab";
 import "../scss/card.scss";
 
 /**
@@ -40,7 +41,7 @@ const SimpleCard = (props) => {
             {employee.firstName}{" "}
             <Typography className="name">(firstName)</Typography>
           </Typography>
-          <Typography  data-testid="LastName" variant="h7" className="item">
+          <Typography data-testid="LastName" variant="h7" className="item">
             {employee.lastName}{" "}
             <Typography className="name">(lastName)</Typography>
           </Typography>
@@ -54,7 +55,7 @@ const SimpleCard = (props) => {
             {employee.designation}{" "}
             <Typography className="name"> (jobTitle)</Typography>
           </Typography>
-          <Typography  data-testid="company" variant="h7" className="item">
+          <Typography data-testid="company" variant="h7" className="item">
             {employee.company}{" "}
             <Typography className="name"> (company)</Typography>
           </Typography>
@@ -66,13 +67,23 @@ const SimpleCard = (props) => {
           </Typography>
         </CardContent>
         <CardActions className="cardActions">
+          <Fab size="small" color="secondary" aria-label="edit">
+            <IconButton>
+              <EditIcon
+                data-testid="editIcon"
+                color="primary"
+                onClick={handleEdit}
+              ></EditIcon>
+            </IconButton>
+          </Fab>
           <IconButton>
-            <EditIcon data-testid="editIcon" color="primary" onClick={handleEdit}></EditIcon>
-          </IconButton>
-          <IconButton>
-            <DeleteIcon data-testid="deleteIcon" color="secondary"
-              onClick={handleDelete}
-            ></DeleteIcon>
+            <Fab size="small" color="primary" aria-label="edit">
+              <DeleteIcon
+                data-testid="deleteIcon"
+                color="secondary"
+                onClick={handleDelete}
+              ></DeleteIcon>
+            </Fab>
           </IconButton>
         </CardActions>
       </Card>
