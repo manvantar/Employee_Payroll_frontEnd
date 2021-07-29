@@ -77,10 +77,9 @@ const SimpleCard = (props) => {
             </IconButton>
           </Fab>
           <IconButton>
-            <Fab size="small" color="primary" aria-label="edit">
+            <Fab size="small" color="primary" aria-label="delete">
               <DeleteIcon
                 data-testid="deleteIcon"
-                color="secondary"
                 onClick={handleDelete}
               ></DeleteIcon>
             </Fab>
