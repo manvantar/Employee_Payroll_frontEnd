@@ -43,8 +43,8 @@ const Signup = ({ handleChange }) => {
    * @return Error if validation fails
    */
   const validationSchema = Yup.object().shape({
-    firstName: Yup.string().min(2).required("Required"),
-    lastName: Yup.string().min(1).required("Required"),
+    firstName: Yup.string().min(2).required("Required").matches(/^([a-zA-Z]+[,.]?[ ]?|[a-zA-Z]+['-]?)+$/, "Enter Valid Firstname"),
+    lastName: Yup.string().min(1).required("Required").matches(/^([a-zA-Z]{1,})+$/, "Enter Valid Lastname"),
     email: Yup.string().email("please enter valid email").required("Required"),
     password: Yup.string().required("Required").matches(
       /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
