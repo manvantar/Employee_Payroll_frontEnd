@@ -46,7 +46,10 @@ const Signup = ({ handleChange }) => {
     firstName: Yup.string().min(2).required("Required"),
     lastName: Yup.string().min(1).required("Required"),
     email: Yup.string().email("please enter valid email").required("Required"),
-    password: Yup.string().required("Required").min(8),
+    password: Yup.string().required("Required").matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at min 8 char, 1(upper, lower, num, special char)"
+    ),
     confirmPassword: Yup.string().oneOf(
       [Yup.ref("password"), null],
       "Passwords must match"
@@ -69,12 +72,12 @@ const Signup = ({ handleChange }) => {
         .SignUpData(userData)
         .then((res) => {
           if (res.data.success === true) {
+            setTimeout(function(){history.push("/login")}, 2000);
             setNotify({
               isOpen: true,
-              message: "Something went wrong",
-              type: "error",
+              message: "User Registration Successfull",
+              type: "success",
             });
-            history.push("/login");
           } else {
             setNotify({
               isOpen: true,

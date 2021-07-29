@@ -42,7 +42,10 @@ const Login = ({ handleChange }) => {
    */
   const validationSchema = Yup.object().shape({
     email: Yup.string().email("please enter valid email").required("Required"),
-    password: Yup.string().required("Required").min(8),
+    password: Yup.string().required("Required").matches(
+      /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
+      "Password must contain at min 8 char, 1(upper, lower, num, special char)"
+    ),
   });
 
   /**
