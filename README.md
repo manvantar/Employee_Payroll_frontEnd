@@ -32,9 +32,11 @@ Also, be sure to have `git` available in your PATH, `npm` might need it (You can
   $ npm install
 
 ## Configure app 
-  $ you need to run backend Application follow https://github.com/manvantar/EmployeePayroll_webApp. git  to run Backend Application
+  $ you need to run backend Application follow https://github.com/manvantar/EmployeePayroll_webApp.git to run Backend Application
+
   $ after installation create '.env' file in Employee_Payroll_frontEnd root path and then add the 
-  React_App_BASEURL="http://localhost:7000" to .env file 
+  React_App_BASEURL="http://localhost:7000" to .env file
+
   environment variables for your customisation
 
 ## Running the app
