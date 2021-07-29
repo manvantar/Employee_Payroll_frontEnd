@@ -123,7 +123,7 @@ const Login = ({ handleChange }) => {
                   variant="outlined"
                   fullWidth
                   required
-                  helperText={<ErrorMessage className="error" name="email" />}
+                  helperText={<ErrorMessage name = 'email'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
                 />
                 <Field
                   as={TextField}
@@ -137,7 +137,8 @@ const Login = ({ handleChange }) => {
                   fullWidth
                   required
                   helperText={
-                    <ErrorMessage className="error" name="password" />
+                    // <ErrorMessage className="error" name="password" />
+                    <ErrorMessage name = 'password'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>
                   }
                 />
 

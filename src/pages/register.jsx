@@ -136,7 +136,7 @@ const Signup = ({ handleChange }) => {
                     variant="outlined"
                     fullWidth
                     required
-                    helperText={<ErrorMessage name="firstName" />}
+                    helperText={<ErrorMessage name = 'firstName'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -150,7 +150,7 @@ const Signup = ({ handleChange }) => {
                     variant="outlined"
                     fullWidth
                     required
-                    helperText={<ErrorMessage name="lastName" />}
+                    helperText={<ErrorMessage name = 'lastName'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
                   />
                 </Grid>
               </Grid>
@@ -165,7 +165,7 @@ const Signup = ({ handleChange }) => {
                 variant="outlined"
                 fullWidth
                 required
-                helperText={<ErrorMessage name="email" />}
+                helperText={<ErrorMessage name = 'email'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
               />
               <Grid container spacing={1}>
                 <Grid item xs={12} sm={6}>
@@ -180,7 +180,7 @@ const Signup = ({ handleChange }) => {
                     type="password"
                     fullWidth
                     required
-                    helperText={<ErrorMessage name="password" />}
+                    helperText={<ErrorMessage name = 'password'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
                   />
                 </Grid>
                 <Grid item xs={12} sm={6}>
@@ -188,14 +188,14 @@ const Signup = ({ handleChange }) => {
                     className="btnstyle"
                     as={TextField}
                     data-testid="confirmPassword"
-                    label="Confirm Password"
+                    label="Confirm Pass"
                     name="confirmPassword"
                     placeholder="Enter password"
                     variant="outlined"
                     type="password"
                     fullWidth
                     required
-                    helperText={<ErrorMessage name="confirmPassword" />}
+                    helperText={<ErrorMessage name = 'confirmPassword'>{msg => <div style={{ color: 'red' }}>{ msg }</div>}</ErrorMessage>}
                   />
                 </Grid>
               </Grid>
