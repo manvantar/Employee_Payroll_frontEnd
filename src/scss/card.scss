@@ -1,6 +1,5 @@
 .root {
-  all: unset;
-  max-width: 350px;
+  min-width: 300px;
   margin-bottom: 25px;
   margin-top: 25px;
   margin-right: 25px;
@@ -18,5 +17,5 @@
 }
 
 .cardActions {
-  margin-left: 180px;
+  float: right;
 }
